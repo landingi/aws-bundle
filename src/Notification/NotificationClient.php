@@ -5,4 +5,5 @@ namespace Landingi\Core\Notification;
 
 interface NotificationClient
 {
+    public function publish(Message $message): void;
 }
