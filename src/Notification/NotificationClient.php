@@ -5,5 +5,4 @@ namespace Landingi\Core\Notification;
 
 interface NotificationClient
 {
-
 }

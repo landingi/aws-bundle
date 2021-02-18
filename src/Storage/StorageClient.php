@@ -5,5 +5,4 @@ namespace Landingi\Core\Storage;
 
 interface StorageClient
 {
-
 }

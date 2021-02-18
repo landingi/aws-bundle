@@ -7,5 +7,4 @@ use Landingi\Core\Notification\NotificationClient;
 
 final class SnsNotification implements NotificationClient
 {
-
 }
