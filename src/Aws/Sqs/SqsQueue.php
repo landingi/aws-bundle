@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Landingi\Core\Aws\Sqs;
 
 use Aws\Sqs\SqsClient;
+use JsonException;
 use Landingi\Core\Queue\Message;
 use Landingi\Core\Queue\MessageMetadata;
 use Landingi\Core\Queue\QueueClient;
@@ -20,7 +21,7 @@ final class SqsQueue implements QueueClient
     }
 
     /**
-     * @throws \JsonException
+     * @throws JsonException
      */
     public function sendMessage(Message $message, ?MessageMetadata $metadata = null): void
     {
