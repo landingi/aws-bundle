@@ -1,0 +1,27 @@
+{
+    "name": "landingi/aws-bundle",
+    "description": "Landingi Standard Library",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^7.4",
+        "ext-json": "*",
+        "aws/aws-sdk-php": "^3.172"
+    },
+    "require-dev": {
+        "landingi/php-coding-standards": "^1.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Landingi\\Core\\" : "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Landingi\\Core\\" : "tests"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
