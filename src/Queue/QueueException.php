@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Landingi\Core\Queue;
 
-final class QueueException extends \Exception
+use Exception;
+
+final class QueueException extends Exception
 {
 }
