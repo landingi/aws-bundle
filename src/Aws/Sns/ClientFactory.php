@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\Core\Aws\Sns;
+namespace Landingi\AwsBundle\Aws\Sns;
 
 use Aws\Credentials\Credentials;
 use Aws\Sns\SnsClient;

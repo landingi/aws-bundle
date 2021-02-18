@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\Core\Aws\Sqs;
+namespace Landingi\AwsBundle\Aws\Sqs;
 
-use Landingi\Core\Queue\QueueException;
+use Landingi\AwsBundle\Queue\QueueException;
 
 final class Delay
 {

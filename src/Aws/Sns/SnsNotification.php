@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\Core\Aws\Sns;
+namespace Landingi\AwsBundle\Aws\Sns;
 
 use Aws\Sns\SnsClient;
 use JsonException;
-use Landingi\Core\Notification\Message;
-use Landingi\Core\Notification\NotificationClient;
+use Landingi\AwsBundle\Notification\Message;
+use Landingi\AwsBundle\Notification\NotificationClient;
 
 final class SnsNotification implements NotificationClient
 {

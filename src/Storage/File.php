@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\Core\Storage;
+namespace Landingi\AwsBundle\Storage;
 
 interface File
 {

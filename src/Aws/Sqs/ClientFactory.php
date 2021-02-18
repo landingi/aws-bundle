@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\Core\Aws\Sqs;
+namespace Landingi\AwsBundle\Aws\Sqs;
 
 use Aws\Credentials\Credentials;
 use Aws\Sqs\SqsClient;

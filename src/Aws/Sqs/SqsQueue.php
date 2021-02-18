@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\Core\Aws\Sqs;
+namespace Landingi\AwsBundle\Aws\Sqs;
 
 use Aws\Sqs\SqsClient;
 use JsonException;
-use Landingi\Core\Queue\Message;
-use Landingi\Core\Queue\MessageMetadata;
-use Landingi\Core\Queue\QueueClient;
+use Landingi\AwsBundle\Queue\Message;
+use Landingi\AwsBundle\Queue\MessageMetadata;
+use Landingi\AwsBundle\Queue\QueueClient;
 
 final class SqsQueue implements QueueClient
 {

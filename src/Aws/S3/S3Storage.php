@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\Core\Aws\S3;
+namespace Landingi\AwsBundle\Aws\S3;
 
 use Aws\S3\S3Client;
-use Landingi\Core\Storage\File;
-use Landingi\Core\Storage\StorageClient;
+use Landingi\AwsBundle\Storage\File;
+use Landingi\AwsBundle\Storage\StorageClient;
 
 final class S3Storage implements StorageClient
 {

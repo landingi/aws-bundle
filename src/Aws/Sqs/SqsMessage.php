@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\Core\Aws\Sqs;
+namespace Landingi\AwsBundle\Aws\Sqs;
 
-use Landingi\Core\Queue\Message;
+use Landingi\AwsBundle\Queue\Message;
 
 final class SqsMessage implements Message
 {

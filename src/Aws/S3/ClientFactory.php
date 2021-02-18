@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\Core\Aws\S3;
+namespace Landingi\AwsBundle\Aws\S3;
 
 use Aws\Credentials\Credentials;
 use Aws\S3\S3Client;

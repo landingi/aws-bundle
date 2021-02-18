@@ -1,2 +1,10 @@
-Landingi AWS Bundle PoC 
-=============
+# Landingi AWS Bundle PoC 
+
+## How to use
+
+```yaml
+services:
+    
+```
+
+

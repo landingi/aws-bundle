@@ -14,12 +14,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Landingi\\Core\\" : "src"
+            "Landingi\\AwsBundle\\" : "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Landingi\\Core\\" : "tests"
+            "Landingi\\AwsBundle\\" : "tests"
         }
     },
     "minimum-stability": "dev",

@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\Core\Aws\DynamoDb;
+namespace Landingi\AwsBundle\Aws\DynamoDb;
 
 use Aws\Credentials\Credentials;
 use Aws\DynamoDb\DynamoDbClient;
