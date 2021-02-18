@@ -7,5 +7,8 @@ interface File
 {
     public function getName(): string;
 
+    /**
+     * @return mixed
+     */
     public function getContent();
 }

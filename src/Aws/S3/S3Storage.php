@@ -18,6 +18,9 @@ final class S3Storage implements StorageClient
         $this->bucket = $bucket;
     }
 
+    /**
+     * @return mixed
+     */
     public function get(string $name)
     {
         return $this->client->getObject([
