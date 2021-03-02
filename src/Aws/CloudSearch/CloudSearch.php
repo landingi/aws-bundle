@@ -3,27 +3,62 @@ declare(strict_types=1);
 
 namespace Landingi\AwsBundle\Aws\CloudSearch;
 
-use Aws\CloudSearch\CloudSearchClient;
+use Aws\CloudSearchDomain\CloudSearchDomainClient;
+use JsonException;
 use Landingi\AwsBundle\Search\Document;
 use Landingi\AwsBundle\Search\DocumentIdentifier;
 use Landingi\AwsBundle\Search\SearchClient;
 
 final class CloudSearch implements SearchClient
 {
-    private CloudSearchClient $client;
+    private CloudSearchDomainClient $client;
 
-    public function __construct(CloudSearchClient $client)
+    public function __construct(CloudSearchDomainClient $client)
     {
         $this->client = $client;
     }
 
-    public function upload(Document ...$documents) : void
+    /**
+     * @throws JsonException
+     */
+    public function upload(Document ...$documents): void
     {
-        // TODO: Implement upload() method.
+        $this->uploadDocuments(
+            array_map(
+                static fn (Document $document) => [
+                    'type' => 'add',
+                    'id' => $document->getIdentifier()->getString(),
+                    'fields' => $document->getFields(),
+                ],
+                $documents
+            )
+        );
     }
 
-    public function delete(DocumentIdentifier ...$documentIds) : void
+    /**
+     * @throws JsonException
+     */
+    public function delete(DocumentIdentifier ...$documentIds): void
     {
-        // TODO: Implement delete() method.
+        $this->uploadDocuments(
+            array_map(
+                static fn (DocumentIdentifier $documentId) => [
+                    'type' => 'delete',
+                    'id' => $documentId->getString(),
+                ],
+                $documentIds
+            )
+        );
+    }
+
+    /**
+     * @throws JsonException
+     */
+    private function uploadDocuments(array $documents): void
+    {
+        $this->client->uploadDocuments([
+            'contentType' => 'application/json',
+            'documents' => json_encode($documents, JSON_THROW_ON_ERROR),
+        ]);
     }
 }
