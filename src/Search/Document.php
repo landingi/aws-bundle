@@ -12,7 +12,7 @@ final class Document
      */
     private array $fields;
 
-    public function __construct(DocumentIdentifier $identifier, DocumentField... $fields)
+    public function __construct(DocumentIdentifier $identifier, DocumentField ...$fields)
     {
         $this->identifier = $identifier;
         $this->fields = $fields;
