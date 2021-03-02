@@ -3,6 +3,7 @@
 ```yaml
 parameters:
     aws.region.west: 'eu-west-1'
+    aws.cloud-search.endpoint: 'https://endpoint.region.cloudsearch.amazonaws.com'
 
 services:
     
@@ -15,6 +16,7 @@ services:
         arguments:
             - '@aws.credentials'
             - '%aws.region.west%'
+            - '%aws.cloud-search.endpoint%'
 
     Landingi\AwsBundle\Aws\CloudSearch:
         class: Landingi\AwsBundle\Aws\CloudSearch

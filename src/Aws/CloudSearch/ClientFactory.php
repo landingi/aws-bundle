@@ -8,12 +8,14 @@ use Aws\Credentials\Credentials;
 
 final class ClientFactory
 {
-    public function build(Credentials $credentials, string $region): CloudSearchDomainClient
+    public function build(Credentials $credentials, string $region, string $endpoint): CloudSearchDomainClient
     {
         return new CloudSearchDomainClient([
             'credentials' => $credentials,
+            'endpoint' => $endpoint,
             'region' => $region,
             'version' => 'latest',
+            'validation' => false,
         ]);
     }
 }
