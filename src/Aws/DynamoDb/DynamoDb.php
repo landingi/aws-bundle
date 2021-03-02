@@ -8,12 +8,12 @@ use Aws\DynamoDb\Marshaler;
 
 class DynamoDb
 {
-    private DynamoDbClient $sdk;
+    private DynamoDbClient $client;
     private Marshaler $marshaler;
 
-    public function __construct(DynamoDbClient $sdk, Marshaler $marshaler)
+    public function __construct(DynamoDbClient $client, Marshaler $marshaler)
     {
-        $this->sdk = $sdk;
+        $this->client = $client;
         $this->marshaler = $marshaler;
     }
 
@@ -25,7 +25,7 @@ class DynamoDb
      */
     public function getItem(array $key, string $tableName)
     {
-        $item = $this->sdk->getItem([
+        $item = $this->client->getItem([
             'TableName' => $tableName,
             'Key' => $this->marshaler->marshalItem($key),
         ]);
@@ -45,7 +45,7 @@ class DynamoDb
             $expressionAttributeNames[sprintf('#%s', $fieldName)] = $fieldName;
         }
 
-        $this->sdk->updateItem([
+        $this->client->updateItem([
             'TableName' => $tableName,
             'Key' => $this->marshaler->marshalItem($key),
             'UpdateExpression' => sprintf('set %s', rtrim($updateExpression, ', ')),
