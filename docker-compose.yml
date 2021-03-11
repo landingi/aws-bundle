@@ -1,3 +1,5 @@
+version: "3.7"
+
 services:
     aws-bundle:
         container_name: "aws-bundle"
