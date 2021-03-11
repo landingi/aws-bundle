@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Landingi\AwsBundle\Aws\S3;
 
 use Aws\S3\S3Client;
-use DateTimeInterface;
+use DateTime;
 use Landingi\AwsBundle\Storage\File;
 use Landingi\AwsBundle\Storage\StorageClient;
 
@@ -30,7 +30,7 @@ final class S3Storage implements StorageClient
         ])->get('Body');
     }
 
-    public function getUrl(string $name, DateTimeInterface $expires): string
+    public function getUrl(string $name, DateTime $expires): string
     {
         $cmd = $this->client->getCommand('GetObject', [
             'Bucket' => $this->bucket,
