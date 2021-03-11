@@ -1,3 +1,13 @@
-# Landingi AWS Bundle PoC 
+# Landingi AWS Bundle (PoC) 
 
-## Find out how to use each module [read](docs/README.md)
+## Requirements
+
+- PHP >= 7.4 (with JSON extension)
+
+## How to use?
+
+* [Cloud Search](docs/cloud-search.md)
+* [DynamoDB](docs/dynamodb.md)
+* [S3](docs/s3.md)
+* [SQS](docs/sqs.md)
+* [SNS](docs/sns.md)
