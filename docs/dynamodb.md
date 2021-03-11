@@ -16,7 +16,8 @@ services:
     Landingi\AwsBundle\Aws\DynamoDb\ClientFactory: ~
     
     aws.dynamodb.client.west:
-        factory: ['Landingi\AwsBundle\Aws\DynamoDb\ClientFactory', 'build']
+        class: Aws\DynamoDb\DynamoDbClient
+        factory: ['@Landingi\AwsBundle\Aws\DynamoDb\ClientFactory', 'build']
         arguments:
             - '@aws.credentials'
             - '%aws.region.west%'
