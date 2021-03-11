@@ -10,8 +10,11 @@ services:
     aws.credentials:
         class: Aws\Credentials\Credentials
         arguments: ['%env(AWS_ACCESS_KEY_ID)%', '%env(AWS_SECRET_ACCESS_KEY)%']
+        
+    Landingi\AwsBundle\Aws\Sqs\ClientFactory: ~
     
     aws.sqs.client.west:
+        class: Aws\Sqs\SqsClient
         factory: ['Landingi\AwsBundle\Aws\Sqs\ClientFactory', 'build']
         arguments:
             - '@aws.credentials'
