@@ -10,9 +10,12 @@ services:
     aws.credentials:
         class: Aws\Credentials\Credentials
         arguments: ['%env(AWS_ACCESS_KEY_ID)%', '%env(AWS_SECRET_ACCESS_KEY)%']
+        
+    Landingi\AwsBundle\Aws\CloudSearch\ClientFactory: ~
     
     aws.cloud-search.client.west:
-        factory: ['Landingi\AwsBundle\Aws\CloudSearch\ClientFactory', 'build']
+        class: Aws\CloudSearchDomain\CloudSearchDomainClient
+        factory: ['@Landingi\AwsBundle\Aws\CloudSearch\ClientFactory', 'build']
         arguments:
             - '@aws.credentials'
             - '%aws.region.west%'

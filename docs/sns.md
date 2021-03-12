@@ -9,9 +9,12 @@ services:
     aws.credentials:
         class: Aws\Credentials\Credentials
         arguments: ['%env(AWS_ACCESS_KEY_ID)%', '%env(AWS_SECRET_ACCESS_KEY)%']
+
+    Landingi\AwsBundle\Aws\Sns\ClientFactory: ~
     
     aws.sns.client.west:
-        factory: ['Landingi\AwsBundle\Aws\Sns\ClientFactory', 'build']
+        class: Aws\Sns\SnsClient
+        factory: ['@Landingi\AwsBundle\Aws\Sns\ClientFactory', 'build']
         arguments:
             - '@aws.credentials'
             - '%aws.region.west%'
