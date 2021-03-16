@@ -5,8 +5,10 @@ namespace Landingi\AwsBundle\Aws\DynamoDb;
 
 use Aws\DynamoDb\DynamoDbClient;
 use Aws\DynamoDb\Marshaler;
+use Landingi\AwsBundle\Database\DatabaseClient;
+use Landingi\AwsBundle\Database\DatabaseException;
 
-class DynamoDb
+class DynamoDb implements DatabaseClient
 {
     private DynamoDbClient $client;
     private Marshaler $marshaler;
@@ -19,18 +21,22 @@ class DynamoDb
 
     /**
      * Example:
-     * $dynamoDb->getItem(['id' => 2], 'tableName');.
+     * $dynamoDb->getItem('tableName', ['id' => 2]);
      *
-     * @return array|\stdClass|null
+     * @throws DatabaseException
      */
-    public function getItem(array $key, string $tableName)
+    public function getItem(string $tableName, array $key): array
     {
         $item = $this->client->getItem([
             'TableName' => $tableName,
             'Key' => $this->marshaler->marshalItem($key),
         ]);
 
-        return isset($item['Item']) ? $this->marshaler->unmarshalItem($item['Item']) : null;
+        if (!isset($item['Item'])) {
+            throw new DatabaseException('Item not found');
+        }
+
+        return $this->marshaler->unmarshalItem($item['Item'], false);
     }
 
     public function updateItem(string $tableName, array $key, array $values): void

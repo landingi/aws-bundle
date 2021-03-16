@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\Memory;
+namespace Landingi\AwsBundle\Memory\Queue;
 
 use Landingi\AwsBundle\Queue\MessageMetadata;
 use Landingi\AwsBundle\Queue\QueueException;

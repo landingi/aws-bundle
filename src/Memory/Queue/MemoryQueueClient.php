@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\Memory;
+namespace Landingi\AwsBundle\Memory\Queue;
 
 use Countable;
 use Landingi\AwsBundle\Queue\Message;
