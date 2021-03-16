@@ -12,8 +12,18 @@ final class DocumentIdentifier
         $this->identifier = $identifier;
     }
 
-    public function getString(): string
+    public function toString(): string
     {
         return $this->identifier;
+    }
+
+    public function __toString(): string
+    {
+        return $this->toString();
+    }
+
+    public function equals(self $documentIdentifier): bool
+    {
+        return $this->identifier === $documentIdentifier->identifier;
     }
 }

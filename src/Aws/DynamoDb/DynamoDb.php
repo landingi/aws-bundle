@@ -5,35 +5,53 @@ namespace Landingi\AwsBundle\Aws\DynamoDb;
 
 use Aws\DynamoDb\DynamoDbClient;
 use Aws\DynamoDb\Marshaler;
+use Landingi\AwsBundle\Database\DatabaseException;
+use Landingi\AwsBundle\Database\KeyValueDatabaseClient;
+use function json_encode;
+use function rtrim;
+use function sprintf;
 
-class DynamoDb
+class DynamoDb implements KeyValueDatabaseClient
 {
     private DynamoDbClient $client;
     private Marshaler $marshaler;
+    private string $tableName;
 
-    public function __construct(DynamoDbClient $client, Marshaler $marshaler)
+    public function __construct(DynamoDbClient $client, Marshaler $marshaler, string $tableName)
     {
         $this->client = $client;
         $this->marshaler = $marshaler;
+        $this->tableName = $tableName;
     }
 
     /**
      * Example:
-     * $dynamoDb->getItem(['id' => 2], 'tableName');.
+     * $dynamoDb->getItem(['id' => 2]);.
      *
-     * @return array|\stdClass|null
+     * @throws \Landingi\AwsBundle\Database\DatabaseException
+     * @throws \JsonException
      */
-    public function getItem(array $key, string $tableName)
+    public function get(array $key): array
     {
         $item = $this->client->getItem([
-            'TableName' => $tableName,
+            'TableName' => $this->tableName,
             'Key' => $this->marshaler->marshalItem($key),
         ]);
 
-        return isset($item['Item']) ? $this->marshaler->unmarshalItem($item['Item']) : null;
+        if (!isset($item['Item'])) {
+            throw new DatabaseException(
+                sprintf(
+                    'Item for key (%s) not found in (%s) table',
+                    json_encode($key, JSON_THROW_ON_ERROR),
+                    $this->tableName
+                )
+            );
+        }
+
+        return (array) $this->marshaler->unmarshalItem($item['Item'], false);
     }
 
-    public function updateItem(string $tableName, array $key, array $values): void
+    public function update(array $key, array $values): void
     {
         $expressionAttributeNames = [];
         $expressionAttributeValues = [];
@@ -46,11 +64,19 @@ class DynamoDb
         }
 
         $this->client->updateItem([
-            'TableName' => $tableName,
+            'TableName' => $this->tableName,
             'Key' => $this->marshaler->marshalItem($key),
             'UpdateExpression' => sprintf('set %s', rtrim($updateExpression, ', ')),
             'ExpressionAttributeValues' => $expressionAttributeValues,
             'ExpressionAttributeNames' => $expressionAttributeNames,
+        ]);
+    }
+
+    public function delete(array $key): void
+    {
+        $this->client->deleteItem([
+            'TableName' => $this->tableName,
+            'Key' => $this->marshaler->marshalItem($key),
         ]);
     }
 }

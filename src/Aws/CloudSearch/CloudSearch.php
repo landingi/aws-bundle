@@ -8,6 +8,8 @@ use JsonException;
 use Landingi\AwsBundle\Search\Document;
 use Landingi\AwsBundle\Search\DocumentIdentifier;
 use Landingi\AwsBundle\Search\SearchClient;
+use function array_map;
+use function json_encode;
 
 final class CloudSearch implements SearchClient
 {
@@ -27,7 +29,7 @@ final class CloudSearch implements SearchClient
             array_map(
                 static fn (Document $document) => [
                     'type' => 'add',
-                    'id' => $document->getIdentifier()->getString(),
+                    'id' => $document->getIdentifier()->toString(),
                     'fields' => $document->getFields(),
                 ],
                 $documents
@@ -38,16 +40,13 @@ final class CloudSearch implements SearchClient
     /**
      * @throws JsonException
      */
-    public function delete(DocumentIdentifier ...$documentIds): void
+    public function delete(DocumentIdentifier $documentIdentifier): void
     {
         $this->uploadDocuments(
-            array_map(
-                static fn (DocumentIdentifier $documentId) => [
-                    'type' => 'delete',
-                    'id' => $documentId->getString(),
-                ],
-                $documentIds
-            )
+            [
+                'type' => 'delete',
+                'id' => $documentIdentifier->toString(),
+            ]
         );
     }
 

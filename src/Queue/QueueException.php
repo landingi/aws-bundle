@@ -5,6 +5,6 @@ namespace Landingi\AwsBundle\Queue;
 
 use Exception;
 
-final class QueueException extends Exception
+class QueueException extends Exception
 {
 }
