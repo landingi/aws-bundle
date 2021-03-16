@@ -36,7 +36,7 @@ class DynamoDb implements DatabaseClient
             throw new DatabaseException('Item not found');
         }
 
-        return $this->marshaler->unmarshalItem($item['Item'], false);
+        return (array) $this->marshaler->unmarshalItem($item['Item'], false);
     }
 
     public function updateItem(string $tableName, array $key, array $values): void
