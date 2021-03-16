@@ -3,9 +3,10 @@ declare(strict_types=1);
 
 namespace Landingi\AwsBundle\Aws\Sqs;
 
+use Landingi\AwsBundle\Queue\MessageMetadata;
 use Landingi\AwsBundle\Queue\QueueException;
 
-final class Delay
+final class Delay implements MessageMetadata
 {
     private int $delay;
 

@@ -3,6 +3,7 @@
 ```yaml
 parameters:
     aws.region.west: 'eu-west-1'
+    aws.dynamodb.table-name: 'table-name'
 
 services:
     
@@ -24,5 +25,5 @@ services:
 
     Landingi\AwsBundle\Aws\DynamoDb:
         class: Landingi\AwsBundle\Aws\DynamoDb
-        arguments: ['@aws.dynamodb.client.west', '@aws.dynamodb.marshaler']
+        arguments: ['@aws.dynamodb.client.west', '@aws.dynamodb.marshaler', '%aws.dynamodb.table-name%']
 ```
