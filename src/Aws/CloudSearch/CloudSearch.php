@@ -44,7 +44,7 @@ final class CloudSearch implements SearchClient
             array_map(
                 static fn (DocumentIdentifier $documentId) => [
                     'type' => 'delete',
-                    'id' => $documentId->getString(),
+                    'id' => $documentId->toString(),
                 ],
                 $documentIds
             )
