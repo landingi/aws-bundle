@@ -34,5 +34,8 @@ services:
 
     Landingi\AwsBundle\Aws\DynamoDb:
         class: Landingi\AwsBundle\Aws\DynamoDb
-        arguments: ['@aws.dynamodb.client.west', '@aws.dynamodb.marshaler', '%aws.dynamodb.table-name%']
+        arguments:
+            - '@aws.dynamodb.client.west'
+            - '@aws.dynamodb.marshaler'
+            - '%aws.dynamodb.table-name%'
 ```
