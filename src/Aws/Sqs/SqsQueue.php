@@ -14,12 +14,14 @@ use function sprintf;
 final class SqsQueue implements QueueClient
 {
     private SqsClient $client;
-    private string $queue;
+    private string $queueEndpoint;
+    private string $queueName;
 
-    public function __construct(SqsClient $client, string $queue)
+    public function __construct(SqsClient $client, string $queueEndpoint, string $queueName)
     {
         $this->client = $client;
-        $this->queue = $queue;
+        $this->queueEndpoint = $queueEndpoint;
+        $this->queueName = $queueName;
     }
 
     /**
@@ -28,7 +30,7 @@ final class SqsQueue implements QueueClient
     public function sendMessage(Message $message, ?MessageMetadata $metadata = null): void
     {
         $arguments = [
-            'QueueUrl' => $this->getQueueUrl(),
+            'QueueUrl' => sprintf('%s/%s', $this->queueEndpoint, $this->queueName),
             'MessageBody' => json_encode($message->getBody(), JSON_THROW_ON_ERROR),
         ];
 
@@ -37,16 +39,5 @@ final class SqsQueue implements QueueClient
         }
 
         $this->client->sendMessage($arguments);
-    }
-
-    private function getQueueUrl(): string
-    {
-        $endpoint = (string) $this->client->getEndpoint();
-
-        if (!$endpoint) {
-            $endpoint = sprintf('https://sqs.%s.amazonaws.com/08482476796', $this->client->getRegion());
-        }
-
-        return "${endpoint}/{$this->queue}";
     }
 }

@@ -1,5 +1,14 @@
 # SNS
 
+## ENV
+
+Required `ENV` variables
+
+```dotenv
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+```
+
 ```yaml
 parameters:
     aws.sns.topic: 'example-topic'
