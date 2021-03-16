@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Landingi\AwsBundle\Database;
 
 /**
- * Temporary PoC interface name - Find better for Key-Value Database/Storage
+ * Temporary PoC interface name - Find better for Key-Value Database/Storage.
  */
 interface DatabaseClient
 {

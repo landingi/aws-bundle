@@ -21,7 +21,7 @@ class DynamoDb implements DatabaseClient
 
     /**
      * Example:
-     * $dynamoDb->getItem('tableName', ['id' => 2]);
+     * $dynamoDb->getItem('tableName', ['id' => 2]);.
      *
      * @throws DatabaseException
      */

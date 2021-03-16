@@ -6,5 +6,5 @@ namespace Landingi\AwsBundle\Search;
 interface SearchClient
 {
     public function upload(Document ...$documents): void;
-    public function delete(DocumentIdentifier ...$documentIds): void;
+    public function delete(DocumentIdentifier $documentIdentifier): void;
 }

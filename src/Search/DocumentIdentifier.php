@@ -21,4 +21,9 @@ final class DocumentIdentifier
     {
         return $this->toString();
     }
+
+    public function equals(self $documentIdentifier): bool
+    {
+        return $this->identifier === $documentIdentifier->identifier;
+    }
 }
