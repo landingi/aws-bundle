@@ -31,8 +31,12 @@ final class MemorySearchClientTest extends TestCase
     public function testItDeletesDocument(): void
     {
         $search = new MemorySearchClient();
-        $search->delete(new DocumentIdentifier('id'));
+        $search->upload(
+            new Document(new DocumentIdentifier('id1')),
+            new Document(new DocumentIdentifier('id2'))
+        );
+        $search->delete(new DocumentIdentifier('id1'));
 
-        self::assertEquals(0, $search->count());
+        self::assertEquals(1, $search->count());
     }
 }
