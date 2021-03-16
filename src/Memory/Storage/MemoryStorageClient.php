@@ -8,6 +8,7 @@ use Landingi\AwsBundle\Storage\File;
 use Landingi\AwsBundle\Storage\StorageClient;
 use Landingi\AwsBundle\Storage\StorageException;
 use function count;
+use function sprintf;
 
 final class MemoryStorageClient implements StorageClient, Countable
 {
@@ -27,7 +28,9 @@ final class MemoryStorageClient implements StorageClient, Countable
             }
         }
 
-        throw new StorageException('File not found');
+        throw new StorageException(
+            sprintf('File for name (%s) not found', $name)
+        );
     }
 
     public function put(File $file): void

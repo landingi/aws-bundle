@@ -8,6 +8,8 @@ use JsonException;
 use Landingi\AwsBundle\Queue\Message;
 use Landingi\AwsBundle\Queue\MessageMetadata;
 use Landingi\AwsBundle\Queue\QueueClient;
+use function json_encode;
+use function sprintf;
 
 final class SqsQueue implements QueueClient
 {
