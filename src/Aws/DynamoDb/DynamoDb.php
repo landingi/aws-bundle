@@ -26,7 +26,7 @@ class DynamoDb implements KeyValueDatabaseClient
 
     /**
      * Example:
-     * $dynamoDb->getItem('tableName', ['id' => 2]);.
+     * $dynamoDb->getItem(['id' => 2]);.
      *
      * @throws \Landingi\AwsBundle\Database\DatabaseException
      * @throws \JsonException
