@@ -18,6 +18,6 @@ final class MemoryMessageMetadataTest extends TestCase
     public function testItThrowsExceptionForInvalidMetadata(): void
     {
         $this->expectException(QueueException::class);
-        new MemoryMessageMetadata(0);
+        new MemoryMessageMetadata(-1);
     }
 }
