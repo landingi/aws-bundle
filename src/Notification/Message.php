@@ -3,7 +3,9 @@ declare(strict_types=1);
 
 namespace Landingi\AwsBundle\Notification;
 
-interface Message
+use JsonSerializable;
+
+interface Message extends JsonSerializable
 {
     public function getData(): array;
 }

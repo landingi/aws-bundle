@@ -18,4 +18,9 @@ final class MemoryMessage implements Message
     {
         return $this->data;
     }
+
+    public function jsonSerialize(): array
+    {
+        return $this->getData();
+    }
 }
