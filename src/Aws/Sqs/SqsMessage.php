@@ -24,7 +24,7 @@ final class SqsMessage implements Message
         return $this->body;
     }
 
-    public function duplicate(): Message
+    public function duplicate(): self
     {
         return new self($this->body);
     }
