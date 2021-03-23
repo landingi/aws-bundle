@@ -19,15 +19,15 @@ final class S3Storage implements StorageClient
         $this->bucket = $bucket;
     }
 
-    /**
-     * @return mixed
-     */
-    public function get(string $name)
+    public function get(string $name): File
     {
-        return $this->client->getObject([
-            'Bucket' => $this->bucket,
-            'Key' => $name,
-        ])->get('Body');
+        return new S3File(
+            $name,
+            $this->client->getObject([
+                'Bucket' => $this->bucket,
+                'Key' => $name,
+            ])->get('Body')
+        );
     }
 
     public function getUrl(string $name, DateTime $expires): string

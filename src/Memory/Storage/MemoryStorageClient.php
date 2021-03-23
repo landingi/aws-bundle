@@ -20,7 +20,7 @@ final class MemoryStorageClient implements StorageClient, Countable
     /**
      * @throws StorageException
      */
-    public function get(string $name)
+    public function get(string $name): File
     {
         foreach ($this->memory as $key => $file) {
             if ($file->getName() === $name) {
