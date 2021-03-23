@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\Memory\Storage;
+namespace Landingi\AwsBundle\Aws\S3;
 
 use Landingi\AwsBundle\Storage\File;
 
-final class MemoryFile implements File
+final class S3File implements File
 {
     private string $name;
     private string $content;
