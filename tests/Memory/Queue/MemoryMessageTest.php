@@ -22,4 +22,10 @@ final class MemoryMessageTest extends TestCase
         self::assertEquals(['key' => 'value'], (new MemoryMessage(['key' => 'value']))->getBody());
         self::assertEquals(['key' => ['value', 'value']], (new MemoryMessage(['key' => ['value', 'value']]))->getBody());
     }
+
+    public function testItDuplicates(): void
+    {
+        self::assertEquals([], (new MemoryMessage([]))->duplicate()->getBody());
+        self::assertEquals(['key'], (new MemoryMessage(['key']))->duplicate()->getBody());
+    }
 }

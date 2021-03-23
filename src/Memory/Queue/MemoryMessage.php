@@ -23,4 +23,9 @@ final class MemoryMessage implements Message
     {
         return $this->body;
     }
+
+    public function duplicate(): self
+    {
+        return new self($this->body);
+    }
 }
