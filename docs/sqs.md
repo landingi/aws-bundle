@@ -33,10 +33,17 @@ services:
             - '@aws.credentials'
             - '%aws.region.west%'
 
-    Landingi\AwsBundle\Aws\SqsQueue:
-        class: Landingi\AwsBundle\Aws\SqsQueue
+    Landingi\AwsBundle\Aws\Sqs\SqsQueue:
+        class: Landingi\AwsBundle\Aws\Sqs\SqsQueue
         arguments:
-            - '@aws.s3.client.west'
+            - '@aws.sqs.client.west'
+            - '%aws.sqs.endpoint%'
+            - '%aws.sqs.queue-name%'
+
+    Landingi\AwsBundle\Aws\Sqs\SqsQueueManager:
+        class: Landingi\AwsBundle\Aws\Sqs\SqsQueueManager
+        arguments:
+            - '@aws.sqs.client.west'
             - '%aws.sqs.endpoint%'
             - '%aws.sqs.queue-name%'
 ```
@@ -64,10 +71,17 @@ services:
             - '@aws.credentials'
             - '%aws.region.west%'
 
-    Landingi\AwsBundle\Aws\SqsQueue:
-        class: Landingi\AwsBundle\Aws\SqsQueue
+    Landingi\AwsBundle\Aws\Sqs\SqsQueue:
+        class: Landingi\AwsBundle\Aws\Sqs\SqsQueue
         arguments:
-            - '@aws.s3.client.west'
+            - '@aws.sqs.client.west'
+            - '%aws.sqs.endpoint%'
+            - '%aws.sqs.queue-name%'
+
+    Landingi\AwsBundle\Aws\Sqs\SqsQueueManager:
+        class: Landingi\AwsBundle\Aws\Sqs\SqsQueueManager
+        arguments:
+            - '@aws.sqs.client.west'
             - '%aws.sqs.endpoint%'
             - '%aws.sqs.queue-name%'
 ```
