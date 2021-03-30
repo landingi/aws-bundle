@@ -52,7 +52,7 @@ final class SqsQueue implements QueueClient
 
         if (is_array($response->search('Messages'))) {
             return array_map(
-                static fn($message) => $message['Body'],
+                static fn ($message) => $message['Body'],
                 $response->search('Messages')
             );
         }

@@ -5,7 +5,6 @@ namespace Landingi\AwsBundle\Aws\Sqs;
 
 use Aws\Sqs\SqsClient;
 use Landingi\AwsBundle\Queue\QueueManager;
-use function is_array;
 
 final class SqsQueueManager implements QueueManager
 {
