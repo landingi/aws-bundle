@@ -43,11 +43,11 @@ final class SqsQueue implements QueueClient
         $this->client->sendMessage($arguments);
     }
 
-    public function getMessages(): array
+    public function getMessages(int $numberOfMessages = 10): array
     {
         $response = $this->client->receiveMessage([
             'QueueUrl' => sprintf('%s/%s', $this->queueEndpoint, $this->queueName),
-            'MaxNumberOfMessages' => 10,
+            'MaxNumberOfMessages' => $numberOfMessages,
         ]);
 
         if (is_array($response->search('Messages'))) {
