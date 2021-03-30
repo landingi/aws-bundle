@@ -82,6 +82,4 @@ services:
         class: Landingi\AwsBundle\Aws\Sqs\SqsQueueManager
         arguments:
             - '@aws.sqs.client.west'
-            - '%aws.sqs.endpoint%'
-            - '%aws.sqs.queue-name%'
 ```

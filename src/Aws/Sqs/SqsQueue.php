@@ -8,6 +8,8 @@ use JsonException;
 use Landingi\AwsBundle\Queue\Message;
 use Landingi\AwsBundle\Queue\MessageMetadata;
 use Landingi\AwsBundle\Queue\QueueClient;
+use function array_map;
+use function is_array;
 use function json_encode;
 use function sprintf;
 
@@ -39,5 +41,22 @@ final class SqsQueue implements QueueClient
         }
 
         $this->client->sendMessage($arguments);
+    }
+
+    public function getMessages(int $numberOfMessages = 10): array
+    {
+        $response = $this->client->receiveMessage([
+            'QueueUrl' => sprintf('%s/%s', $this->queueEndpoint, $this->queueName),
+            'MaxNumberOfMessages' => $numberOfMessages,
+        ]);
+
+        if (is_array($response->search('Messages'))) {
+            return array_map(
+                static fn ($message) => $message['Body'],
+                $response->search('Messages')
+            );
+        }
+
+        return [];
     }
 }

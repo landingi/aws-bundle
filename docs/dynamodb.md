@@ -7,12 +7,14 @@ Required `ENV` variables
 ```dotenv
 AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY
+AWS_DYNAMODB_ENDPOINT
 ```
 
 ```yaml
 parameters:
     aws.region.west: 'eu-west-1'
     aws.dynamodb.table-name: 'table-name'
+    aws.dynamodb.endpoint: '%env(AWS_DYNAMODB_ENDPOINT)%'
 
 services:
     
@@ -31,9 +33,10 @@ services:
         arguments:
             - '@aws.credentials'
             - '%aws.region.west%'
+            - '%aws.dynamodb.endpoint%'
 
-    Landingi\AwsBundle\Aws\DynamoDb:
-        class: Landingi\AwsBundle\Aws\DynamoDb
+    Landingi\AwsBundle\Aws\DynamoDb\DynamoDb:
+        class: Landingi\AwsBundle\Aws\DynamoDb\DynamoDb
         arguments:
             - '@aws.dynamodb.client.west'
             - '@aws.dynamodb.marshaler'
