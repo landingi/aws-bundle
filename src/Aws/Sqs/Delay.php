@@ -11,7 +11,15 @@ final class Delay implements MessageMetadata
     private int $delay;
 
     /**
-     * @throws QueueException
+     * @throws \Landingi\AwsBundle\Queue\QueueException
+     */
+    public static function createDefault(): self
+    {
+        return new self(0);
+    }
+
+    /**
+     * @throws \Landingi\AwsBundle\Queue\QueueException
      */
     public function __construct(int $delay)
     {
