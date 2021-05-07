@@ -11,7 +11,7 @@ final class MemoryTimeSeries implements TimeSeries
 {
     private array $timeSeries = [];
 
-    public function write(AttributeName $databaseName, AttributeName $tableName, Record ...$records) : void
+    public function write(AttributeName $databaseName, AttributeName $tableName, Record ...$records): void
     {
         foreach ($records as $record) {
             $this->timeSeries[$databaseName->toString()][$tableName->toString()][] = $record;
