@@ -38,17 +38,17 @@ final class Record implements DataPoint
         return $this->dataPoint->getTimeUnit();
     }
 
-    public function getName() : string
+    public function getName(): string
     {
         return $this->dataPoint->getName();
     }
 
-    public function getValue() : string
+    public function getValue(): string
     {
         return $this->dataPoint->getValue();
     }
 
-    public function getValueType() : string
+    public function getValueType(): string
     {
         return $this->dataPoint->getValueType();
     }

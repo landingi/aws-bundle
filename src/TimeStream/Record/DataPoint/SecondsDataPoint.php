@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Landingi\AwsBundle\TimeStream\Record\DataPoint;
 
-use Landingi\AwsBundle\TimeStream\Record\Measure;
 use Landingi\AwsBundle\TimeStream\Record\DataPoint;
+use Landingi\AwsBundle\TimeStream\Record\Measure;
 
 final class SecondsDataPoint implements DataPoint
 {

@@ -24,7 +24,7 @@ final class BooleanMeasure implements Measure
 
     public function getValue(): string
     {
-        return $this->measureValue ? 'true': 'false';
+        return $this->measureValue ? 'true' : 'false';
     }
 
     public function getValueType(): string

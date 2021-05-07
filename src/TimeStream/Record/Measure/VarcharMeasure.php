@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Landingi\AwsBundle\TimeStream\Record\Measure;
 
-use Landingi\AwsBundle\TimeStream\Exception\InvalidAttributeValueException;
 use Landingi\AwsBundle\TimeStream\AttributeName;
+use Landingi\AwsBundle\TimeStream\Exception\InvalidAttributeValueException;
 use Landingi\AwsBundle\TimeStream\Record\Measure;
 
 final class VarcharMeasure implements Measure
