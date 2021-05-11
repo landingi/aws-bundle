@@ -14,7 +14,7 @@ final class AttributeName
      */
     public function __construct(string $attributeName)
     {
-        if (strlen($attributeName) < 1) {
+        if (strlen(trim($attributeName)) < 1) {
             throw InvalidAttributeNameException::tooShort();
         }
 
