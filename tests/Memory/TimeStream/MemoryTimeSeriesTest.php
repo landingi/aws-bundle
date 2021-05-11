@@ -6,6 +6,7 @@ namespace Landingi\AwsBundle\Memory\TimeStream;
 use Landingi\AwsBundle\TimeStream\AttributeName;
 use Landingi\AwsBundle\TimeStream\Record;
 use Landingi\AwsBundle\TimeStream\Record\DataPoint\SecondsDataPoint;
+use Landingi\AwsBundle\TimeStream\Record\Dimension;
 use Landingi\AwsBundle\TimeStream\Record\Measure\BooleanMeasure;
 use PHPUnit\Framework\TestCase;
 
@@ -31,6 +32,10 @@ class MemoryTimeSeriesTest extends TestCase
                     new AttributeName('foo'),
                     true
                 )
+            ),
+            new Dimension(
+                new AttributeName('bar'),
+                'baz'
             )
         );
         $database = new AttributeName('database');
