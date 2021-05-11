@@ -29,6 +29,6 @@ final class BigIntMeasure implements Measure
 
     public function getValueType(): string
     {
-        return 'DOUBLE';
+        return 'BIGINT';
     }
 }

@@ -29,6 +29,6 @@ final class BooleanMeasure implements Measure
 
     public function getValueType(): string
     {
-        return 'DOUBLE';
+        return 'BOOLEAN';
     }
 }
