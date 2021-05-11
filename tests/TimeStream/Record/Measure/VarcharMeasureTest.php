@@ -16,7 +16,7 @@ class VarcharMeasureTest extends TestCase
         );
         new VarcharMeasure(
             new AttributeName('foo'),
-            'bar'
+            ''
         );
     }
 
