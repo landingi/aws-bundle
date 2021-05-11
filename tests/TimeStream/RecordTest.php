@@ -33,7 +33,7 @@ class RecordTest extends TestCase
                 new Dimension(
                     new AttributeName('bar'),
                     'baz'
-                )
+                ),
             ],
             (new Record(
                 new SecondsDataPoint(
