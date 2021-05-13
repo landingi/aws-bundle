@@ -29,3 +29,25 @@ services:
             - '@aws.credentials'
             - '%aws.region.west%'
 ```
+
+## Usage example
+
+```php
+$stream = new MemoryTimeSeries(); // use TimeStreamClient from DI in prod
+$stream->write(
+    new AttributeName('database_name'),
+    new AttributeName('table_name'),
+    new Record(
+        new SecondsDataPoint(
+            new BigIntMeasure(
+                new AttributeName('measure_name'),
+                $measureValue = 100
+            )
+        ),
+        new Dimension(
+            new AttributeName('dimension_name'),
+            'dimension_value'
+        )
+    )
+);
+```
