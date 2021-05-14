@@ -18,13 +18,11 @@ class ClientFactoryTest extends TestCase
 
         // act & assert
         self::assertEquals(
-            new TimestreamDatabase(
-                new TimestreamWriteClient([
-                    'credentials' => $credentials,
-                    'region' => $region,
-                    'version' => 'latest',
-                ])
-            ),
+            new TimestreamWriteClient([
+                'credentials' => $credentials,
+                'region' => $region,
+                'version' => 'latest',
+            ]),
             $factory->build(
                 $credentials,
                 $region
