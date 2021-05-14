@@ -1,27 +1,29 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\Aws\TimeStream;
+namespace Landingi\AwsBundle\Aws\Timestream;
 
 use Aws\TimestreamWrite\TimestreamWriteClient;
-use Landingi\AwsBundle\TimeStream\AttributeName;
-use Landingi\AwsBundle\TimeStream\Record;
-use Landingi\AwsBundle\TimeStream\Record\Dimension;
-use Landingi\AwsBundle\TimeStream\TimeSeries;
+use Landingi\AwsBundle\Database\TimeSeries\AttributeName;
+use Landingi\AwsBundle\Database\TimeSeries\Record;
+use Landingi\AwsBundle\Database\TimeSeries\Record\Dimension;
+use Landingi\AwsBundle\Database\TimeSeriesDatabaseClient;
 
-final class TimeStreamClient implements TimeSeries
+final class TimestreamDatabase implements TimeSeriesDatabaseClient
 {
     private TimestreamWriteClient $client;
+    private string $databaseName;
 
-    public function __construct(TimestreamWriteClient $client)
+    public function __construct(TimestreamWriteClient $client, string $databaseName)
     {
         $this->client = $client;
+        $this->databaseName = $databaseName;
     }
 
-    public function write(AttributeName $databaseName, AttributeName $tableName, Record ...$records): void
+    public function write(AttributeName $tableName, Record ...$records): void
     {
         $this->client->writeRecords([
-            'DatabaseName' => $databaseName->toString(),
+            'DatabaseName' => $this->databaseName,
             'TableName' => $tableName->toString(),
             'Records' => array_map(
                 fn (Record $record) => [

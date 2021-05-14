@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\TimeStream\Record\Measure;
+namespace Landingi\AwsBundle\Database\TimeSeries\Record\Measure;
 
-use Landingi\AwsBundle\TimeStream\AttributeName;
-use Landingi\AwsBundle\TimeStream\Record\Measure;
+use Landingi\AwsBundle\Database\TimeSeries\AttributeName;
+use Landingi\AwsBundle\Database\TimeSeries\Record\Measure;
 
 final class BigIntMeasure implements Measure
 {

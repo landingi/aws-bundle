@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\TimeStream\Record;
+namespace Landingi\AwsBundle\Database\TimeSeries\Record;
 
 interface DataPoint extends Measure
 {

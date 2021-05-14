@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\TimeStream\Exception;
+namespace Landingi\AwsBundle\Database\TimeSeries\Exception;
 
 use Exception;
 

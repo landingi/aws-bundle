@@ -1,17 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\TimeStream;
+namespace Landingi\AwsBundle\Database\TimeSeries;
 
-use Landingi\AwsBundle\TimeStream\Exception\InvalidRecordException;
-use Landingi\AwsBundle\TimeStream\Record\DataPoint;
-use Landingi\AwsBundle\TimeStream\Record\Dimension;
+use Landingi\AwsBundle\Database\TimeSeries\Exception\InvalidRecordException;
+use Landingi\AwsBundle\Database\TimeSeries\Record\DataPoint;
+use Landingi\AwsBundle\Database\TimeSeries\Record\Dimension;
 
 final class Record implements DataPoint
 {
     private DataPoint $dataPoint;
     private array $dimensions;
 
+    /**
+     * @throws \Landingi\AwsBundle\Database\TimeSeries\Exception\InvalidRecordException
+     */
     public function __construct(DataPoint $dataPoint, Dimension ...$dimensions)
     {
         $this->dataPoint = $dataPoint;

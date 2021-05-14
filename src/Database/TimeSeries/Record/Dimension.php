@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\TimeStream\Record;
+namespace Landingi\AwsBundle\Database\TimeSeries\Record;
 
-use Landingi\AwsBundle\TimeStream\AttributeName;
-use Landingi\AwsBundle\TimeStream\Exception\InvalidAttributeValueException;
+use Landingi\AwsBundle\Database\TimeSeries\AttributeName;
+use Landingi\AwsBundle\Database\TimeSeries\Exception\InvalidAttributeValueException;
 
 final class Dimension
 {
@@ -12,11 +12,11 @@ final class Dimension
     private string $dimensionValue;
 
     /**
-     * @throws InvalidAttributeValueException
+     * @throws \Landingi\AwsBundle\Database\TimeSeries\Exception\InvalidAttributeValueException
      */
     public function __construct(AttributeName $dimensionName, string $dimensionValue)
     {
-        if (strlen($dimensionValue) < 1) {
+        if ($dimensionValue === '') {
             throw InvalidAttributeValueException::tooShort();
         }
 

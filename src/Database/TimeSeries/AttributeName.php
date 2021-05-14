@@ -1,20 +1,21 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\TimeStream;
+namespace Landingi\AwsBundle\Database\TimeSeries;
 
-use Landingi\AwsBundle\TimeStream\Exception\InvalidAttributeNameException;
+use Landingi\AwsBundle\Database\TimeSeries\Exception\InvalidAttributeNameException;
+use function trim;
 
 final class AttributeName
 {
     private string $attributeName;
 
     /**
-     * @throws InvalidAttributeNameException
+     * @throws \Landingi\AwsBundle\Database\TimeSeries\Exception\InvalidAttributeNameException
      */
     public function __construct(string $attributeName)
     {
-        if (strlen(trim($attributeName)) < 1) {
+        if (trim($attributeName) === '') {
             throw InvalidAttributeNameException::tooShort();
         }
 

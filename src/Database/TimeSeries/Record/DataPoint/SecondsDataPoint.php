@@ -1,10 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\TimeStream\Record\DataPoint;
+namespace Landingi\AwsBundle\Database\TimeSeries\Record\DataPoint;
 
-use Landingi\AwsBundle\TimeStream\Record\DataPoint;
-use Landingi\AwsBundle\TimeStream\Record\Measure;
+use Landingi\AwsBundle\Database\TimeSeries\Record\DataPoint;
+use Landingi\AwsBundle\Database\TimeSeries\Record\Measure;
+use function time;
 
 final class SecondsDataPoint implements DataPoint
 {

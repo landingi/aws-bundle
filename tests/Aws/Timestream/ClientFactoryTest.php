@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\Aws\TimeStream;
+namespace Landingi\AwsBundle\Aws\Timestream;
 
 use Aws\Credentials\Credentials;
 use Aws\TimestreamWrite\TimestreamWriteClient;
@@ -18,7 +18,7 @@ class ClientFactoryTest extends TestCase
 
         // act & assert
         self::assertEquals(
-            new TimeStreamClient(
+            new TimestreamDatabase(
                 new TimestreamWriteClient([
                     'credentials' => $credentials,
                     'region' => $region,

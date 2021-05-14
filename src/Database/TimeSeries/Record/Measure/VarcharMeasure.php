@@ -1,11 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\TimeStream\Record\Measure;
+namespace Landingi\AwsBundle\Database\TimeSeries\Record\Measure;
 
-use Landingi\AwsBundle\TimeStream\AttributeName;
-use Landingi\AwsBundle\TimeStream\Exception\InvalidAttributeValueException;
-use Landingi\AwsBundle\TimeStream\Record\Measure;
+use Landingi\AwsBundle\Database\TimeSeries\AttributeName;
+use Landingi\AwsBundle\Database\TimeSeries\Exception\InvalidAttributeValueException;
+use Landingi\AwsBundle\Database\TimeSeries\Record\Measure;
+use function trim;
 
 final class VarcharMeasure implements Measure
 {
@@ -13,11 +14,11 @@ final class VarcharMeasure implements Measure
     private string $measureValue;
 
     /**
-     * @throws InvalidAttributeValueException
+     * @throws \Landingi\AwsBundle\Database\TimeSeries\Exception\InvalidAttributeValueException
      */
     public function __construct(AttributeName $measureName, string $measureValue)
     {
-        if (strlen(trim($measureValue)) < 1) {
+        if (trim($measureValue) === '') {
             throw InvalidAttributeValueException::tooShort();
         }
 
