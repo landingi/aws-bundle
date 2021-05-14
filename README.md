@@ -12,6 +12,7 @@
 * [S3](docs/s3.md)
 * [SQS](docs/sqs.md)
 * [SNS](docs/sns.md)
+* [TimeStream](docs/time-stream.md)
 
 ## Thank you
 
