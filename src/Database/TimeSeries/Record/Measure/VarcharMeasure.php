@@ -18,7 +18,7 @@ final class VarcharMeasure implements Measure
      */
     public function __construct(AttributeName $measureName, string $measureValue)
     {
-        if (trim($measureValue) === '') {
+        if ('' === trim($measureValue)) {
             throw InvalidAttributeValueException::tooShort();
         }
 

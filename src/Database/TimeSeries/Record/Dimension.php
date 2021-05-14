@@ -16,7 +16,7 @@ final class Dimension
      */
     public function __construct(AttributeName $dimensionName, string $dimensionValue)
     {
-        if ($dimensionValue === '') {
+        if ('' === $dimensionValue) {
             throw InvalidAttributeValueException::tooShort();
         }
 
