@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\TimeStream\Record\Measure;
+namespace Landingi\AwsBundle\Database\TimeSeries\Record\Measure;
 
-use Landingi\AwsBundle\TimeStream\AttributeName;
+use Landingi\AwsBundle\Database\TimeSeries\AttributeName;
 use PHPUnit\Framework\TestCase;
 
 class BigIntMeasureTest extends TestCase

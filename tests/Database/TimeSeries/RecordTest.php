@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\TimeStream;
+namespace Landingi\AwsBundle\Database\TimeSeries;
 
-use Landingi\AwsBundle\TimeStream\Exception\InvalidRecordException;
-use Landingi\AwsBundle\TimeStream\Record\DataPoint\SecondsDataPoint;
-use Landingi\AwsBundle\TimeStream\Record\Dimension;
-use Landingi\AwsBundle\TimeStream\Record\Measure\BooleanMeasure;
+use Landingi\AwsBundle\Database\TimeSeries\Exception\InvalidRecordException;
+use Landingi\AwsBundle\Database\TimeSeries\Record\DataPoint\SecondsDataPoint;
+use Landingi\AwsBundle\Database\TimeSeries\Record\Dimension;
+use Landingi\AwsBundle\Database\TimeSeries\Record\Measure\BooleanMeasure;
 use PHPUnit\Framework\TestCase;
 
 class RecordTest extends TestCase
 {
     public function testMissingDimensions(): void
     {
-        self::expectExceptionObject(
+        $this->expectExceptionObject(
             InvalidRecordException::missingDimension()
         );
         new Record(

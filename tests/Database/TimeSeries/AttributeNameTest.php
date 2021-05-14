@@ -1,16 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\TimeStream;
+namespace Landingi\AwsBundle\Database\TimeSeries;
 
-use Landingi\AwsBundle\TimeStream\Exception\InvalidAttributeNameException;
+use Landingi\AwsBundle\Database\TimeSeries\Exception\InvalidAttributeNameException;
 use PHPUnit\Framework\TestCase;
 
 class AttributeNameTest extends TestCase
 {
     public function testNameTooShort(): void
     {
-        self::expectExceptionObject(
+        $this->expectExceptionObject(
             InvalidAttributeNameException::tooShort()
         );
         new AttributeName('');

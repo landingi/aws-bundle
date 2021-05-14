@@ -1,10 +1,10 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\TimeStream\Record\DataPoint;
+namespace Landingi\AwsBundle\Database\TimeSeries\Record\DataPoint;
 
-use Landingi\AwsBundle\TimeStream\AttributeName;
-use Landingi\AwsBundle\TimeStream\Record\Measure\BooleanMeasure;
+use Landingi\AwsBundle\Database\TimeSeries\AttributeName;
+use Landingi\AwsBundle\Database\TimeSeries\Record\Measure\BooleanMeasure;
 use PHPUnit\Framework\TestCase;
 
 class SecondsDataPointTest extends TestCase

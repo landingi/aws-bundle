@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\TimeStream\Record\Measure;
+namespace Landingi\AwsBundle\Database\TimeSeries\Record\Measure;
 
-use Landingi\AwsBundle\TimeStream\AttributeName;
-use Landingi\AwsBundle\TimeStream\Exception\InvalidAttributeValueException;
+use Landingi\AwsBundle\Database\TimeSeries\AttributeName;
+use Landingi\AwsBundle\Database\TimeSeries\Exception\InvalidAttributeValueException;
 use PHPUnit\Framework\TestCase;
 
 class VarcharMeasureTest extends TestCase
 {
     public function testTooShortValue(): void
     {
-        self::expectExceptionObject(
+        $this->expectExceptionObject(
             InvalidAttributeValueException::tooShort()
         );
         new VarcharMeasure(

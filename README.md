@@ -12,9 +12,12 @@
 * [S3](docs/s3.md)
 * [SQS](docs/sqs.md)
 * [SNS](docs/sns.md)
-* [TimeStream](docs/timestream.md)
+* [Timestream](docs/timestream.md)
+
+## Nice to know
+* [Code Convention](docs/convention.md)
 
 ## Thank you
 
-* [Rafał Strzelbicki](https://github.com/rafal-strzelbicki) - for Cloud Search implementation
+* [Rafał Strzelbicki](https://github.com/rafal-strzelbicki) - for Cloud Search & Timestream implementation
 * [Sebastian Bielawski](https://github.com/BastekBielawski) - for Code Review and implementation feedback

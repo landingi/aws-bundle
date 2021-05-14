@@ -1,17 +1,17 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\TimeStream\Record;
+namespace Landingi\AwsBundle\Database\TimeSeries\Record;
 
-use Landingi\AwsBundle\TimeStream\AttributeName;
-use Landingi\AwsBundle\TimeStream\Exception\InvalidAttributeValueException;
+use Landingi\AwsBundle\Database\TimeSeries\AttributeName;
+use Landingi\AwsBundle\Database\TimeSeries\Exception\InvalidAttributeValueException;
 use PHPUnit\Framework\TestCase;
 
 class DimensionTest extends TestCase
 {
     public function testValueTooShort(): void
     {
-        self::expectExceptionObject(
+        $this->expectExceptionObject(
             InvalidAttributeValueException::tooShort()
         );
         new Dimension(

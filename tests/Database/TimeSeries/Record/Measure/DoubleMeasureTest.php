@@ -1,27 +1,20 @@
 <?php
 declare(strict_types=1);
 
-namespace Landingi\AwsBundle\TimeStream\Record\Measure;
+namespace Landingi\AwsBundle\Database\TimeSeries\Record\Measure;
 
-use Landingi\AwsBundle\TimeStream\AttributeName;
+use Landingi\AwsBundle\Database\TimeSeries\AttributeName;
 use PHPUnit\Framework\TestCase;
 
-class BooleanMeasureTest extends TestCase
+class DoubleMeasureTest extends TestCase
 {
     public function testGetValue(): void
     {
         self::assertEquals(
-            'true',
-            (new BooleanMeasure(
+            '1.5',
+            (new DoubleMeasure(
                 new AttributeName('foo'),
-                true
-            ))->getValue()
-        );
-        self::assertEquals(
-            'false',
-            (new BooleanMeasure(
-                new AttributeName('foo'),
-                false
+                1.5
             ))->getValue()
         );
     }
@@ -29,10 +22,10 @@ class BooleanMeasureTest extends TestCase
     public function testGetValueType(): void
     {
         self::assertEquals(
-            'BOOLEAN',
-            (new BooleanMeasure(
+            'DOUBLE',
+            (new DoubleMeasure(
                 new AttributeName('foo'),
-                true
+                1.5
             ))->getValueType()
         );
     }
@@ -41,9 +34,9 @@ class BooleanMeasureTest extends TestCase
     {
         self::assertEquals(
             'foo',
-            (new BooleanMeasure(
+            (new DoubleMeasure(
                 new AttributeName('foo'),
-                true
+                1.5
             ))->getName()
         );
     }
