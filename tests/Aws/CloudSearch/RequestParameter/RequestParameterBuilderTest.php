@@ -5,6 +5,7 @@ namespace Landingi\AwsBundle\Aws\CloudSearch\RequestParameter;
 use Landingi\AwsBundle\Aws\CloudSearch\RequestParameter\FilterQuery\AndFilterQueryCollection;
 use Landingi\AwsBundle\Aws\CloudSearch\RequestParameter\FilterQuery\DoubleFilterQuery;
 use Landingi\AwsBundle\Aws\CloudSearch\RequestParameter\FilterQuery\IntegerFilterQuery;
+use Landingi\AwsBundle\Aws\CloudSearch\RequestParameter\FilterQuery\NoValueSetFilterQuery;
 use Landingi\AwsBundle\Aws\CloudSearch\RequestParameter\FilterQuery\OrFilterQueryCollection;
 use Landingi\AwsBundle\Aws\CloudSearch\RequestParameter\FilterQuery\StringFilterQuery;
 use Landingi\AwsBundle\Aws\CloudSearch\RequestParameter\Query\QueryParameters;
@@ -82,7 +83,8 @@ class RequestParameterBuilderTest extends TestCase
         $filterQueryCollection = (new AndFilterQueryCollection())
             ->add(StringFilterQuery::create('field1', 'value1'))
             ->add(IntegerFilterQuery::create('field2', 1))
-            ->add(DoubleFilterQuery::create('field3', 60.02));
+            ->add(DoubleFilterQuery::create('field3', 60.02))
+            ->add(NoValueSetFilterQuery::forInteger('field4'));
 
 
         // Act
@@ -95,7 +97,7 @@ class RequestParameterBuilderTest extends TestCase
             [
                 'query' => 'matchall',
                 'queryParser' => 'structured',
-                'filterQuery' => '(and field1: \'value1\' field2: 1 field3: 60.02)',
+                'filterQuery' => '(and field1: \'value1\' field2: 1 field3: 60.02 (not (range field=field4 {,9223372036854775807})))',
             ],
             $requestParameters
         );
