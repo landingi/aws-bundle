@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace Landingi\AwsBundle\Aws\CloudSearch\RequestParameter;
 
@@ -86,7 +87,6 @@ class RequestParameterBuilderTest extends TestCase
             ->add(DoubleFilterQuery::create('field3', 60.02))
             ->add(NoValueSetFilterQuery::forInteger('field4'));
 
-
         // Act
         $requestParameters = $builder
             ->setFilterQuery($filterQueryCollection)
@@ -120,7 +120,6 @@ class RequestParameterBuilderTest extends TestCase
             )
             ->add(new OrFilterQueryCollection())
             ->add(StringFilterQuery::create('field3', 'value1'));
-
 
         // Act
         $requestParameters = $builder
