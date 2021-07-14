@@ -9,7 +9,7 @@
         "aws/aws-sdk-php": "^3.172"
     },
     "require-dev": {
-        "landingi/php-coding-standards": "^1.0",
+        "landingi/php-coding-standards": "1.0.3",
         "phpunit/phpunit": "^9.5"
     },
     "autoload": {
