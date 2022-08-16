@@ -10,6 +10,8 @@ final class LuceneQueryParametersBuilder
     private const SEARCH_FIELD_PATTERN = '%s:';
     private const EXACT_MATCH_PATTERN = '"%s"';
     private const WILDCARD_MATCH_PATTERN = '*%s*';
+    private const OPERATOR_OR = 'OR';
+    private const OPERATOR_AND = 'AND';
     private const SPECIAL_CHARACTERS = [
         '+', '-', '&&', '||', '!', '(', ')', '{', '}', '[', ']', '^', '"', '~', '*', '?', ':', '/', '\\'
     ];
@@ -72,10 +74,10 @@ final class LuceneQueryParametersBuilder
                 $queryTokenParts[] = $this->buildQueryPartWithWildcard($queryToken);
             }
 
-            $queryParts[] = $this->joinPartsWithOr($queryTokenParts);
+            $queryParts[] = $this->joinPartsWithOperator($queryTokenParts, self::OPERATOR_OR);
         }
 
-        return QueryParameters::usingLucene($this->joinPartsWithAnd($queryParts));
+        return QueryParameters::usingLucene($this->joinPartsWithOperator($queryParts, self::OPERATOR_AND));
     }
 
     private function buildQueryForMatchPattern(string $queryToken, string $matchPattern): string
@@ -94,30 +96,17 @@ final class LuceneQueryParametersBuilder
             $this->searchByFields
         );
 
-        return $this->joinPartsWithOr($queryTokenParts);
+        return $this->joinPartsWithOperator($queryTokenParts, self::OPERATOR_OR);
     }
 
-    private function joinPartsWithOr(array $queryParts): string
+    private function joinPartsWithOperator(array $queryParts, string $operator): string
     {
         $queryParts = $this->filterOutEmptyElements($queryParts);
 
         return sprintf(
             count($queryParts) > 1 ? '(%s)' : '%s',
             implode(
-        ' OR ',
-                $queryParts
-            )
-        );
-    }
-
-    private function joinPartsWithAnd(array $queryParts): string
-    {
-        $queryParts = $this->filterOutEmptyElements($queryParts);
-
-        return sprintf(
-            count($queryParts) > 1 ? '(%s)' : '%s',
-            implode(
-                ' AND ',
+                'OR' === $operator ? ' OR ' : ' AND ',
                 $queryParts
             )
         );
@@ -164,7 +153,7 @@ final class LuceneQueryParametersBuilder
                 $this->searchByFields
             );
 
-            return $this->joinPartsWithOr($queryTokenParts);
+            return $this->joinPartsWithOperator($queryTokenParts, self::OPERATOR_OR);
         }
 
         return $wildcardQuery;
