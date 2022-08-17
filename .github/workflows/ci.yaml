@@ -1,0 +1,44 @@
+on:
+    pull_request:
+    push:
+        branches:
+            - main
+jobs:
+    static-analyze:
+        runs-on: ubuntu-20.04
+        steps:
+            -   uses: actions/checkout@v2
+            -   uses: shivammathur/setup-php@v2
+                with:
+                    php-version: '7.4'
+            -   name: Validate composer.json and composer.lock
+                run: composer validate --strict
+            -   name: Cache Composer packages
+                id: composer-cache
+                uses: actions/cache@v3
+                with:
+                    path: vendor
+                    key: composer-${{ hashFiles('composer.lock') }}
+            -   name: Install dependencies
+                run: composer install --prefer-dist --no-progress
+            -   run: vendor/bin/phpstan analyse -c phpstan.neon
+#            -   run: vendor/bin/ecs check --config vendor/landingi/php-coding-standards/ecs.php
+    tests:
+        runs-on: ubuntu-20.04
+        steps:
+            -   uses: actions/checkout@v2
+            -   uses: shivammathur/setup-php@v2
+                with:
+                    php-version: '7.4'
+            -   name: Validate composer.json and composer.lock
+                run: composer validate --strict
+            -   name: Cache Composer packages
+                id: composer-cache
+                uses: actions/cache@v3
+                with:
+                    path: vendor
+                    key: composer-${{ hashFiles('composer.lock') }}
+            -   name: Install dependencies
+                run: composer install --prefer-dist --no-progress
+            -   run: vendor/bin/phpunit --testsuite all --coverage-clover=build/coverage.xml
+            -   run: bash <(curl -s https://codecov.io/bash) -f build/coverage.xml
