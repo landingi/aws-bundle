@@ -44,8 +44,10 @@ final class CloudSearch implements SearchClient
     {
         $this->uploadDocuments(
             [
-                'type' => 'delete',
-                'id' => $documentIdentifier->toString(),
+                [
+                    'type' => 'delete',
+                    'id' => $documentIdentifier->toString(),
+                ]
             ]
         );
     }
