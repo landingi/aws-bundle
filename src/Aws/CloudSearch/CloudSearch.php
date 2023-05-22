@@ -40,15 +40,16 @@ final class CloudSearch implements SearchClient
     /**
      * @throws JsonException
      */
-    public function delete(DocumentIdentifier $documentIdentifier): void
+    public function delete(DocumentIdentifier ...$documentIdentifiers): void
     {
         $this->uploadDocuments(
-            [
-                [
+            array_map(
+                fn (DocumentIdentifier $documentIdentifier) => [
                     'type' => 'delete',
-                    'id' => $documentIdentifier->toString(),
-                ]
-            ]
+                    'id' => (string) $documentIdentifier,
+                ],
+                $documentIdentifiers
+            )
         );
     }
 
