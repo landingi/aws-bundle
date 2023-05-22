@@ -21,11 +21,13 @@ final class MemorySearchClient implements SearchClient, Countable
         $this->memory = $documents;
     }
 
-    public function delete(DocumentIdentifier $documentIdentifier): void
+    public function delete(DocumentIdentifier ...$documentIdentifiers): void
     {
         foreach ($this->memory as $key => $document) {
-            if ($document->getIdentifier()->equals($documentIdentifier)) {
-                unset($this->memory[$key]);
+            foreach ($documentIdentifiers as $documentIdentifier) {
+                if ($document->getIdentifier()->equals($documentIdentifier)) {
+                    unset($this->memory[$key]);
+                }
             }
         }
     }
