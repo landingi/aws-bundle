@@ -44,7 +44,7 @@ final class CloudSearch implements SearchClient
     {
         $this->uploadDocuments(
             array_map(
-                fn (DocumentIdentifier $documentIdentifier) => [
+               static fn (DocumentIdentifier $documentIdentifier) => [
                     'type' => 'delete',
                     'id' => (string) $documentIdentifier,
                 ],
