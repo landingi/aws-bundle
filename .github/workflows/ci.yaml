@@ -1,13 +1,8 @@
-# on:
-#     pull_request:
-#     push:
-#         branches:
-#             - main
 on:
     pull_request:
     push:
         branches:
-            - OP-1123-GHA-bump-deprecated-gha
+            - main
 jobs:
     static-analyze:
         runs-on: ubuntu-20.04
