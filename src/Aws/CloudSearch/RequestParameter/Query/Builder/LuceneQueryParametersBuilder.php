@@ -146,7 +146,7 @@ final class LuceneQueryParametersBuilder
             $matchPatternWithField = sprintf(
                 '%s (%s)',
                 self::SEARCH_FIELD_PATTERN,
-                $wildcardQuery
+                str_replace('%', '%%', $wildcardQuery)
             );
             $queryTokenParts = array_map(
                 static fn (string $searchField) => sprintf($matchPatternWithField, $searchField, $queryToken),

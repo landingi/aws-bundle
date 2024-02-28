@@ -111,5 +111,9 @@ final class LuceneQueryParametersBuilderTest extends TestCase
             '!~@#^$ \\',
             '((field1: "!~@#^$" OR field1: (*@#* AND *$*)) AND field1: "\\\")',
         ];
+        yield [
+            'GD-XMAS-30%',
+            '(field1: "GD-XMAS-30%" OR field1: (*GD* AND *XMAS* AND *30%*))',
+        ];
     }
 }
