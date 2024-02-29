@@ -31,4 +31,9 @@ final class MemoryQueueClient implements QueueClient, Countable
     {
         return array_splice($this->memory, 0, $numberOfMessages);
     }
+
+    public function getAllMessages(): array
+    {
+        return $this->memory;
+    }
 }

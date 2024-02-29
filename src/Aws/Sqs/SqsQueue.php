@@ -59,4 +59,20 @@ final class SqsQueue implements QueueClient
 
         return [];
     }
+
+    public function getAllMessages(): array
+    {
+        $response = $this->client->receiveMessage([
+            'QueueUrl' => sprintf('%s/%s', $this->queueEndpoint, $this->queueName),
+        ]);
+
+        if (is_array($response->search('Messages'))) {
+            return array_map(
+                static fn ($message) => $message['Body'],
+                $response->search('Messages')
+            );
+        }
+
+        return [];
+    }
 }
