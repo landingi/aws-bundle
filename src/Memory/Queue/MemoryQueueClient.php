@@ -12,7 +12,7 @@ use function count;
 
 final class MemoryQueueClient implements QueueClient, Countable
 {
-    private array $memory = [];
+    public array $memory = [];
 
     public function sendMessage(Message $message, MessageMetadata $metadata): void
     {
@@ -30,10 +30,5 @@ final class MemoryQueueClient implements QueueClient, Countable
     public function getMessages(int $numberOfMessages = 10): array
     {
         return array_splice($this->memory, 0, $numberOfMessages);
-    }
-
-    public function getAllMessages(): array
-    {
-        return $this->memory;
     }
 }
