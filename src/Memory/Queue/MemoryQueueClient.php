@@ -7,7 +7,7 @@ use Countable;
 use Landingi\AwsBundle\Queue\Message;
 use Landingi\AwsBundle\Queue\MessageMetadata;
 use Landingi\AwsBundle\Queue\QueueClient;
-use function array_splice;
+use function array_slice;
 use function count;
 
 final class MemoryQueueClient implements QueueClient, Countable
@@ -30,5 +30,10 @@ final class MemoryQueueClient implements QueueClient, Countable
     public function getMessages(int $numberOfMessages = 10): array
     {
         return array_slice($this->memory, 0, $numberOfMessages);
+    }
+
+    public function purge(): void
+    {
+        $this->memory = [];
     }
 }
