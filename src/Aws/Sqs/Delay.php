@@ -18,6 +18,11 @@ final class Delay implements MessageMetadata
         return new self(0);
     }
 
+    public static function oneSecond(): self
+    {
+        return new self(1);
+    }
+
     /**
      * @throws \Landingi\AwsBundle\Queue\QueueException
      */
