@@ -5,7 +5,7 @@ on:
             - main
 jobs:
     static-analyze:
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-24.04
         steps:
             -   uses: actions/checkout@v4
             -   uses: shivammathur/setup-php@v2
@@ -24,7 +24,7 @@ jobs:
             -   run: vendor/bin/phpstan analyse -c phpstan.neon
 #            -   run: vendor/bin/ecs check --config vendor/landingi/php-coding-standards/ecs.php
     tests:
-        runs-on: ubuntu-20.04
+        runs-on: ubuntu-24.04
         steps:
             -   uses: actions/checkout@v4
             -   uses: shivammathur/setup-php@v2
