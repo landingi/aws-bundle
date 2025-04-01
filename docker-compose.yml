@@ -5,11 +5,11 @@ services:
         volumes:
             - ./:/app:delegated
         networks:
-            - ferror
+            - landingi-aws-bundle
 
 networks:
-    ferror:
-        name: ferror
+    landingi-aws-bundle:
+        name: landingi-aws-bundle
         driver: bridge
         ipam:
             driver: default
