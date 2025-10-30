@@ -79,4 +79,12 @@ class DynamoDb implements KeyValueDatabaseClient
             'Key' => $this->marshaler->marshalItem($key),
         ]);
     }
+
+    public function put(array $item): void
+    {
+        $this->client->putItem([
+            'TableName' => $this->tableName,
+            'Item' => $this->marshaler->marshalItem($item),
+        ]);
+    }
 }
