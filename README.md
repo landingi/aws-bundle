@@ -1,5 +1,5 @@
 ![Build Status](https://github.com/landingi/aws-bundle/actions/workflows/ci.yaml/badge.svg?branch=master)
-[![Latest Stable Version](https://poser.pugx.org/landingi/aws-bundle/v)](https://packagist.org/packages/landingi/awws-bundle)
+[![Latest Stable Version](https://poser.pugx.org/landingi/aws-bundle/v)](https://packagist.org/packages/landingi/aws-bundle)
 [![Total Downloads](https://poser.pugx.org/landingi/aws-bundle/downloads)](https://packagist.org/packages/landingi/aws-bundle)
 [![License](https://poser.pugx.org/landingi/aws-bundle/license)](https://packagist.org/packages/landingi/aws-bundle)
 
