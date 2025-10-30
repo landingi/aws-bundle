@@ -3,7 +3,8 @@
 [![Total Downloads](https://poser.pugx.org/landingi/aws-bundle/downloads)](https://packagist.org/packages/landingi/aws-bundle)
 [![License](https://poser.pugx.org/landingi/aws-bundle/license)](https://packagist.org/packages/landingi/aws-bundle)
 
-# Landingi AWS Bundle (PoC) 
+# Landingi AWS Bundle
+
 
 ## Requirements
 
