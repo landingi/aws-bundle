@@ -22,6 +22,8 @@ final class SqsMessageAttribute implements MessageAttribute
     }
 
     /**
+     * @param int|float $numberValue
+     *
      * @throws InvalidArgumentException
      */
     public static function number(string $name, $numberValue): self
