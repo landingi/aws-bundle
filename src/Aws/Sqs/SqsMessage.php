@@ -16,8 +16,8 @@ final class SqsMessage implements Message
     private array $attributes;
 
     /**
-     * @param array<MessageAttribute> $body
-     * @param array $attributes
+     * @param array $body
+     * @param array<MessageAttribute> $attributes
      */
     public function __construct(array $body, array $attributes = [])
     {
