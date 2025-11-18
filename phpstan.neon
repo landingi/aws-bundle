@@ -2,4 +2,4 @@ includes:
 	- vendor/landingi/php-coding-standards/phpstan.neon
 
 parameters:
-    treatPhpDocTypesAsCertain: true
+    treatPhpDocTypesAsCertain: false
