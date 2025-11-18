@@ -8,15 +8,22 @@ use Landingi\AwsBundle\Queue\Message;
 final class MemoryMessage implements Message
 {
     private array $body;
+    private array $attributes;
 
-    public function __construct(array $body)
+    public function __construct(array $body, array $attributes = [])
     {
         $this->body = $body;
+        $this->attributes = $attributes;
     }
 
     public function getBody(): array
     {
         return $this->body;
+    }
+
+    public function getAttributes(): array
+    {
+        return $this->attributes;
     }
 
     public function jsonSerialize(): array
@@ -26,6 +33,6 @@ final class MemoryMessage implements Message
 
     public function duplicate(): self
     {
-        return new self($this->body);
+        return new self($this->body, $this->attributes);
     }
 }

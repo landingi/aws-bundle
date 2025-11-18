@@ -4,19 +4,38 @@ declare(strict_types=1);
 namespace Landingi\AwsBundle\Aws\Sqs;
 
 use Landingi\AwsBundle\Queue\Message;
+use Landingi\AwsBundle\Queue\MessageAttribute;
 
 final class SqsMessage implements Message
 {
     private array $body;
 
-    public function __construct(array $body)
+    /**
+     * @var array<MessageAttribute>
+     */
+    private array $attributes;
+
+    /**
+     * @param array<MessageAttribute> $body
+     * @param array $attributes
+     */
+    public function __construct(array $body, array $attributes = [])
     {
         $this->body = $body;
+        $this->attributes = $attributes;
     }
 
     public function getBody(): array
     {
         return $this->body;
+    }
+
+    /**
+     * @return array<MessageAttribute>
+     */
+    public function getAttributes(): array
+    {
+        return $this->attributes;
     }
 
     public function jsonSerialize(): array
@@ -26,6 +45,6 @@ final class SqsMessage implements Message
 
     public function duplicate(): self
     {
-        return new self($this->body);
+        return new self($this->body, $this->attributes);
     }
 }

@@ -40,6 +40,19 @@ final class SqsQueue implements QueueClient
             $arguments['DelaySeconds'] = $metadata->getDelay();
         }
 
+        $attributes = $message->getAttributes();
+
+        if (false === empty($attributes)) {
+            $arguments['MessageAttributes'] = [];
+
+            foreach ($attributes as $attribute) {
+                $arguments['MessageAttributes'][$attribute->getName()] = [
+                    'DataType' => $attribute->getDataType(),
+                    'StringValue' => $attribute->getStringValue(),
+                ];
+            }
+        }
+
         $this->client->sendMessage($arguments);
     }
 
