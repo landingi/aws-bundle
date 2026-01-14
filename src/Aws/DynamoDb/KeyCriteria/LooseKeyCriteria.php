@@ -6,7 +6,7 @@ namespace Landingi\AwsBundle\Aws\DynamoDb\KeyCriteria;
 use Landingi\AwsBundle\Database\KeyCondition;
 use Landingi\AwsBundle\Database\KeyCriteria;
 
-final class LooseKeyCriteria implements KeyCriteria
+final readonly class LooseKeyCriteria implements KeyCriteria
 {
     private array $conditions;
 

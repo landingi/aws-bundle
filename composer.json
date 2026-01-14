@@ -4,13 +4,13 @@
     "type": "library",
     "license": "MIT",
     "require": {
-        "php": ">=7.4",
+        "php": ">=8.2",
         "ext-json": "*",
-        "aws/aws-sdk-php": "^3.172"
+        "aws/aws-sdk-php": "^3.369"
     },
     "require-dev": {
         "landingi/php-coding-standards": "1.0.3",
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^12.5"
     },
     "autoload": {
         "psr-4": {

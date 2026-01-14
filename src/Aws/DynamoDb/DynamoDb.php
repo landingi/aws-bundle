@@ -16,15 +16,11 @@ use function sprintf;
 
 class DynamoDb implements KeyValueDatabaseClient
 {
-    private DynamoDbClient $client;
-    private Marshaler $marshaler;
-    private string $tableName;
-
-    public function __construct(DynamoDbClient $client, Marshaler $marshaler, string $tableName)
-    {
-        $this->client = $client;
-        $this->marshaler = $marshaler;
-        $this->tableName = $tableName;
+    public function __construct(
+        private readonly DynamoDbClient $client,
+        private readonly Marshaler $marshaler,
+        private readonly string $tableName
+    ) {
     }
 
     /**

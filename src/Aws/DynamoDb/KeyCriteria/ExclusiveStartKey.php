@@ -6,7 +6,7 @@ namespace Landingi\AwsBundle\Aws\DynamoDb\KeyCriteria;
 use Landingi\AwsBundle\Aws\DynamoDb\KeyCondition\Equal;
 use Landingi\AwsBundle\Database\ExactKeyCriteria;
 
-final class ExclusiveStartKey implements ExactKeyCriteria
+final readonly class ExclusiveStartKey implements ExactKeyCriteria
 {
     private array $conditions;
 
