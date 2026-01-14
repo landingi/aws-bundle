@@ -26,6 +26,12 @@
             "Landingi\\AwsBundle\\" : "tests"
         }
     },
+    "config": {
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        },
+        "sort-packages": true
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }
