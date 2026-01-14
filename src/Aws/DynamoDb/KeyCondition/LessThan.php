@@ -5,15 +5,10 @@ namespace Landingi\AwsBundle\Aws\DynamoDb\KeyCondition;
 
 use Landingi\AwsBundle\Database\KeyCondition;
 
-final class LessThan implements KeyCondition
+final readonly class LessThan implements KeyCondition
 {
-    private string $key;
-    private $value;
-
-    public function __construct(string $key, $value)
+    public function __construct(private string $key, private mixed $value)
     {
-        $this->key = $key;
-        $this->value = $value;
     }
 
     public function getKey(): string
@@ -26,7 +21,7 @@ final class LessThan implements KeyCondition
         return '<';
     }
 
-    public function getValue()
+    public function getValue(): mixed
     {
         return $this->value;
     }
