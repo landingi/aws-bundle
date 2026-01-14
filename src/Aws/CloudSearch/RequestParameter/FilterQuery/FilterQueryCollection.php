@@ -22,11 +22,11 @@ abstract class FilterQueryCollection implements FilterQueryParameter
             ' ',
             array_filter(
                 array_map(
-                    static fn (FilterQueryParameter $filterQuery) => (string) $filterQuery,
+                    static fn(FilterQueryParameter $filterQuery) => (string) $filterQuery,
                     $this->filterQueries,
                 ),
-                static fn (string $filterQueryString) => '' !== $filterQueryString
-            )
+                static fn(string $filterQueryString) => '' !== $filterQueryString,
+            ),
         );
 
         if ('' === $filterQueriesString) {

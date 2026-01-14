@@ -20,7 +20,6 @@ return ECSConfig::configure()
     ->withParallel(null, 2)
     ->withCache('var/cache/ecs')
     ->withPaths([
-        __DIR__ . '/config',
         __DIR__ . '/src',
         __DIR__ . '/tests',
     ])

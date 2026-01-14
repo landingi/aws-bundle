@@ -12,11 +12,11 @@ class VarcharMeasureTest extends TestCase
     public function testTooShortValue(): void
     {
         $this->expectExceptionObject(
-            InvalidAttributeValueException::tooShort()
+            InvalidAttributeValueException::tooShort(),
         );
         new VarcharMeasure(
             new AttributeName('foo'),
-            ''
+            '',
         );
     }
 
@@ -26,8 +26,8 @@ class VarcharMeasureTest extends TestCase
             'bar',
             (new VarcharMeasure(
                 new AttributeName('foo'),
-                'bar'
-            ))->getValue()
+                'bar',
+            ))->getValue(),
         );
     }
 
@@ -37,8 +37,8 @@ class VarcharMeasureTest extends TestCase
             'VARCHAR',
             (new VarcharMeasure(
                 new AttributeName('foo'),
-                'bar'
-            ))->getValueType()
+                'bar',
+            ))->getValueType(),
         );
     }
 
@@ -48,8 +48,8 @@ class VarcharMeasureTest extends TestCase
             'foo',
             (new VarcharMeasure(
                 new AttributeName('foo'),
-                'bar'
-            ))->getName()
+                'bar',
+            ))->getName(),
         );
     }
 }

@@ -5,6 +5,8 @@ namespace Landingi\AwsBundle\Database;
 
 interface KeyCriteria
 {
-    /** @return KeyCondition[] */
+    /**
+     * @return KeyCondition[]
+     */
     public function getConditions(): array;
 }

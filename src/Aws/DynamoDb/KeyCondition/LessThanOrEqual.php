@@ -7,8 +7,10 @@ use Landingi\AwsBundle\Database\KeyCondition;
 
 final readonly class LessThanOrEqual implements KeyCondition
 {
-    public function __construct(private string $key, private mixed $value)
-    {
+    public function __construct(
+        private string $key,
+        private mixed $value,
+    ) {
     }
 
     public function getKey(): string

@@ -15,7 +15,7 @@ class MemoryTimeSeriesTest extends TestCase
     public function testItIsEmpty(): void
     {
         self::assertEmpty(
-            (new MemoryTimeSeriesDatabaseClient('database'))->getRecords(new AttributeName('table'))
+            (new MemoryTimeSeriesDatabaseClient('database'))->getRecords(new AttributeName('table')),
         );
     }
 
@@ -27,13 +27,13 @@ class MemoryTimeSeriesTest extends TestCase
             new SecondsDataPoint(
                 new BooleanMeasure(
                     new AttributeName('foo'),
-                    true
-                )
+                    true,
+                ),
             ),
             new Dimension(
                 new AttributeName('bar'),
-                'baz'
-            )
+                'baz',
+            ),
         );
         $database = new AttributeName('database');
         $table = new AttributeName('table');

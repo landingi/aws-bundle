@@ -10,6 +10,7 @@ use Landingi\AwsBundle\Database\DatabaseException;
 use Landingi\AwsBundle\Database\ExactKeyCriteria;
 use Landingi\AwsBundle\Database\KeyCriteria;
 use Landingi\AwsBundle\Database\KeyValueDatabaseClient;
+
 use function json_encode;
 use function rtrim;
 use function sprintf;
@@ -19,7 +20,7 @@ class DynamoDb implements KeyValueDatabaseClient
     public function __construct(
         private readonly DynamoDbClient $client,
         private readonly Marshaler $marshaler,
-        private readonly string $tableName
+        private readonly string $tableName,
     ) {
     }
 
@@ -42,16 +43,20 @@ class DynamoDb implements KeyValueDatabaseClient
                 sprintf(
                     'Item for key (%s) not found in (%s) table',
                     json_encode($key, JSON_THROW_ON_ERROR),
-                    $this->tableName
-                )
+                    $this->tableName,
+                ),
             );
         }
 
         return (array) $this->marshaler->unmarshalItem($item['Item'], false);
     }
 
-    public function query(KeyCriteria $key, int $limit, ?string $indexName = null, ?ExactKeyCriteria $offsetKey = null): array
-    {
+    public function query(
+        KeyCriteria $key,
+        int $limit,
+        ?string $indexName = null,
+        ?ExactKeyCriteria $offsetKey = null,
+    ): array {
         $options = ['Limit' => $limit];
 
         if ($offsetKey instanceof ExclusiveStartKey) {
@@ -62,7 +67,7 @@ class DynamoDb implements KeyValueDatabaseClient
             ['TableName' => $this->tableName],
             is_string($indexName) ? ['IndexName' => $indexName] : [],
             $this->buildKeyConditions($key),
-            $options
+            $options,
         ))->get('Items');
 
         if (empty($result)) {
@@ -122,7 +127,7 @@ class DynamoDb implements KeyValueDatabaseClient
 
         return [
             'KeyConditionExpression' => implode(' and ', $conditions),
-            'ExpressionAttributeValues' => $expressions
+            'ExpressionAttributeValues' => $expressions,
         ];
     }
 }

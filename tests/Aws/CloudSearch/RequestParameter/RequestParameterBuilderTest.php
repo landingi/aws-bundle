@@ -30,7 +30,7 @@ class RequestParameterBuilderTest extends TestCase
                 'query' => 'matchall',
                 'queryParser' => 'structured',
             ],
-            $requestParameters
+            $requestParameters,
         );
     }
 
@@ -51,7 +51,7 @@ class RequestParameterBuilderTest extends TestCase
                 'query' => $searchQuery,
                 'queryParser' => 'lucene',
             ],
-            $requestParameters
+            $requestParameters,
         );
     }
 
@@ -73,7 +73,7 @@ class RequestParameterBuilderTest extends TestCase
                 'queryParser' => 'structured',
                 'filterQuery' => 'field: \'value\'',
             ],
-            $requestParameters
+            $requestParameters,
         );
     }
 
@@ -99,7 +99,7 @@ class RequestParameterBuilderTest extends TestCase
                 'queryParser' => 'structured',
                 'filterQuery' => '(and field1: \'value1\' field2: 1 field3: 60.02 (not (range field=field4 {,9223372036854775807})))',
             ],
-            $requestParameters
+            $requestParameters,
         );
     }
 
@@ -111,12 +111,12 @@ class RequestParameterBuilderTest extends TestCase
             ->add(
                 (new AndFilterQueryCollection())
                     ->add(StringFilterQuery::create('field1', 'value1'))
-                    ->add(StringFilterQuery::create('field2', 'value2'))
+                    ->add(StringFilterQuery::create('field2', 'value2')),
             )
             ->add(
                 (new OrFilterQueryCollection())
                     ->add(StringFilterQuery::create('field1', 'value3'))
-                    ->add(StringFilterQuery::create('field2', 'value4'))
+                    ->add(StringFilterQuery::create('field2', 'value4')),
             )
             ->add(new OrFilterQueryCollection())
             ->add(StringFilterQuery::create('field3', 'value1'));
@@ -133,7 +133,7 @@ class RequestParameterBuilderTest extends TestCase
                 'queryParser' => 'structured',
                 'filterQuery' => "(or (and field1: 'value1' field2: 'value2') (or field1: 'value3' field2: 'value4') field3: 'value1')",
             ],
-            $requestParameters
+            $requestParameters,
         );
     }
 
@@ -155,7 +155,7 @@ class RequestParameterBuilderTest extends TestCase
                 'queryParser' => 'structured',
                 'sort' => '_score desc, field asc',
             ],
-            $requestParameters
+            $requestParameters,
         );
     }
 }

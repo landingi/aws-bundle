@@ -7,6 +7,7 @@ use Countable;
 use Landingi\AwsBundle\Search\Document;
 use Landingi\AwsBundle\Search\DocumentIdentifier;
 use Landingi\AwsBundle\Search\SearchClient;
+
 use function count;
 
 final class MemorySearchClient implements SearchClient, Countable

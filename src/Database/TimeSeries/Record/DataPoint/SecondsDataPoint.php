@@ -5,6 +5,7 @@ namespace Landingi\AwsBundle\Database\TimeSeries\Record\DataPoint;
 
 use Landingi\AwsBundle\Database\TimeSeries\Record\DataPoint;
 use Landingi\AwsBundle\Database\TimeSeries\Record\Measure;
+
 use function time;
 
 final class SecondsDataPoint implements DataPoint

@@ -8,6 +8,8 @@ interface KeyCondition
     public function getKey(): string;
     public function getOperator(): string;
 
-    /** @return mixed */
+    /**
+     * @return mixed
+     */
     public function getValue();
 }

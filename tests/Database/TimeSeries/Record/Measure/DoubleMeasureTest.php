@@ -14,8 +14,8 @@ class DoubleMeasureTest extends TestCase
             '1.5',
             (new DoubleMeasure(
                 new AttributeName('foo'),
-                1.5
-            ))->getValue()
+                1.5,
+            ))->getValue(),
         );
     }
 
@@ -25,8 +25,8 @@ class DoubleMeasureTest extends TestCase
             'DOUBLE',
             (new DoubleMeasure(
                 new AttributeName('foo'),
-                1.5
-            ))->getValueType()
+                1.5,
+            ))->getValueType(),
         );
     }
 
@@ -36,8 +36,8 @@ class DoubleMeasureTest extends TestCase
             'foo',
             (new DoubleMeasure(
                 new AttributeName('foo'),
-                1.5
-            ))->getName()
+                1.5,
+            ))->getName(),
         );
     }
 }

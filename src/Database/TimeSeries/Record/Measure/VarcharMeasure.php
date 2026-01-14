@@ -6,6 +6,7 @@ namespace Landingi\AwsBundle\Database\TimeSeries\Record\Measure;
 use Landingi\AwsBundle\Database\TimeSeries\AttributeName;
 use Landingi\AwsBundle\Database\TimeSeries\Exception\InvalidAttributeValueException;
 use Landingi\AwsBundle\Database\TimeSeries\Record\Measure;
+
 use function trim;
 
 final class VarcharMeasure implements Measure

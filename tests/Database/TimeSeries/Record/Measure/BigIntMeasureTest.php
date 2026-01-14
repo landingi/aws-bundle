@@ -14,8 +14,8 @@ class BigIntMeasureTest extends TestCase
             '10',
             (new BigIntMeasure(
                 new AttributeName('foo'),
-                10
-            ))->getValue()
+                10,
+            ))->getValue(),
         );
     }
 
@@ -25,8 +25,8 @@ class BigIntMeasureTest extends TestCase
             'BIGINT',
             (new BigIntMeasure(
                 new AttributeName('foo'),
-                10
-            ))->getValueType()
+                10,
+            ))->getValueType(),
         );
     }
 
@@ -36,8 +36,8 @@ class BigIntMeasureTest extends TestCase
             'foo',
             (new BigIntMeasure(
                 new AttributeName('foo'),
-                10
-            ))->getName()
+                10,
+            ))->getName(),
         );
     }
 }

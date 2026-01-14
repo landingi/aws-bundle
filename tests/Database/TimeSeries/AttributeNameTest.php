@@ -11,7 +11,7 @@ class AttributeNameTest extends TestCase
     public function testNameTooShort(): void
     {
         $this->expectExceptionObject(
-            InvalidAttributeNameException::tooShort()
+            InvalidAttributeNameException::tooShort(),
         );
         new AttributeName('');
     }
@@ -20,11 +20,11 @@ class AttributeNameTest extends TestCase
     {
         self::assertEquals(
             'foo',
-            (new AttributeName('foo'))->toString()
+            (new AttributeName('foo'))->toString(),
         );
         self::assertEquals(
             'foo',
-            (string) new AttributeName('foo')
+            (string) new AttributeName('foo'),
         );
     }
 }

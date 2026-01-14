@@ -13,13 +13,15 @@ final class LuceneQueryParametersBuilder
     private const OPERATOR_OR = 'OR';
     private const OPERATOR_AND = 'AND';
     private const SPECIAL_CHARACTERS = [
-        '+', '-', '&&', '||', '!', '(', ')', '{', '}', '[', ']', '^', '"', '~', '*', '?', ':', '/', '\\'
+        '+', '-', '&&', '||', '!', '(', ')', '{', '}', '[', ']', '^', '"', '~', '*', '?', ':', '/', '\\',
     ];
 
     private string $rawQuery;
     private bool $shouldUseExactMatchingForIndividualWords = false;
     private bool $shouldUseWildcardMatching = false;
-    /** @var array<string> */
+    /**
+     * @var array<string>
+     */
     private array $searchByFields = [];
 
     public function __construct(string $rawQuery)
@@ -89,11 +91,11 @@ final class LuceneQueryParametersBuilder
         $matchPatternWithField = sprintf(
             '%s %s',
             self::SEARCH_FIELD_PATTERN,
-            $matchPattern
+            $matchPattern,
         );
         $queryTokenParts = array_map(
-            static fn (string $searchField) => sprintf($matchPatternWithField, $searchField, $queryToken),
-            $this->searchByFields
+            static fn(string $searchField) => sprintf($matchPatternWithField, $searchField, $queryToken),
+            $this->searchByFields,
         );
 
         return $this->joinPartsWithOperator($queryTokenParts, self::OPERATOR_OR);
@@ -107,8 +109,8 @@ final class LuceneQueryParametersBuilder
             count($queryParts) > 1 ? '(%s)' : '%s',
             implode(
                 'OR' === $operator ? ' OR ' : ' AND ',
-                $queryParts
-            )
+                $queryParts,
+            ),
         );
     }
 
@@ -126,7 +128,7 @@ final class LuceneQueryParametersBuilder
         //  https://jaygurnaniblog.wordpress.com/2017/05/03/lucene-parsing-engine-in-aws-with-special-characters/
         $wildcardQueryTokens = explode(
             ' ',
-            str_replace(self::SPECIAL_CHARACTERS, ' ', $queryToken)
+            str_replace(self::SPECIAL_CHARACTERS, ' ', $queryToken),
         );
         $wildcardQueryTokens = $this->filterOutEmptyElements($wildcardQueryTokens);
 
@@ -138,19 +140,19 @@ final class LuceneQueryParametersBuilder
             ' AND ',
             array_map(
                 static fn(string $wildcardQueryToken) => sprintf(self::WILDCARD_MATCH_PATTERN, $wildcardQueryToken),
-                $wildcardQueryTokens
-            )
+                $wildcardQueryTokens,
+            ),
         );
 
         if (count($this->searchByFields) > 0) {
             $matchPatternWithField = sprintf(
                 '%s (%s)',
                 self::SEARCH_FIELD_PATTERN,
-                str_replace('%', '%%', $wildcardQuery)
+                str_replace('%', '%%', $wildcardQuery),
             );
             $queryTokenParts = array_map(
-                static fn (string $searchField) => sprintf($matchPatternWithField, $searchField, $queryToken),
-                $this->searchByFields
+                static fn(string $searchField) => sprintf($matchPatternWithField, $searchField, $queryToken),
+                $this->searchByFields,
             );
 
             return $this->joinPartsWithOperator($queryTokenParts, self::OPERATOR_OR);
@@ -167,6 +169,6 @@ final class LuceneQueryParametersBuilder
 
     private function filterOutEmptyElements(array $elements): array
     {
-        return array_filter($elements, static fn (string $queryToken) => '' !== trim($queryToken));
+        return array_filter($elements, static fn(string $queryToken) => '' !== trim($queryToken));
     }
 }

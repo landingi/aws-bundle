@@ -16,9 +16,9 @@ class SecondsDataPointTest extends TestCase
             (new SecondsDataPoint(
                 new BooleanMeasure(
                     new AttributeName('foo'),
-                    true
-                )
-            ))->getTimeUnit()
+                    true,
+                ),
+            ))->getTimeUnit(),
         );
     }
 
@@ -29,9 +29,9 @@ class SecondsDataPointTest extends TestCase
             (new SecondsDataPoint(
                 new BooleanMeasure(
                     new AttributeName('foo'),
-                    true
-                )
-            ))->getTime()
+                    true,
+                ),
+            ))->getTime(),
         );
     }
 
@@ -40,14 +40,14 @@ class SecondsDataPointTest extends TestCase
         // arrange
         $measure = new BooleanMeasure(
             new AttributeName('foo'),
-            true
+            true,
         );
         $dataPoint = new SecondsDataPoint($measure);
 
         // act & assert
         self::assertEquals(
             $measure->getName(),
-            $dataPoint->getName()
+            $dataPoint->getName(),
         );
     }
 
@@ -56,14 +56,14 @@ class SecondsDataPointTest extends TestCase
         // arrange
         $measure = new BooleanMeasure(
             new AttributeName('foo'),
-            true
+            true,
         );
         $dataPoint = new SecondsDataPoint($measure);
 
         // act & assert
         self::assertEquals(
             $measure->getValue(),
-            $dataPoint->getValue()
+            $dataPoint->getValue(),
         );
     }
 
@@ -72,14 +72,14 @@ class SecondsDataPointTest extends TestCase
         // arrange
         $measure = new BooleanMeasure(
             new AttributeName('foo'),
-            true
+            true,
         );
         $dataPoint = new SecondsDataPoint($measure);
 
         // act & assert
         self::assertEquals(
             $measure->getValueType(),
-            $dataPoint->getValueType()
+            $dataPoint->getValueType(),
         );
     }
 }

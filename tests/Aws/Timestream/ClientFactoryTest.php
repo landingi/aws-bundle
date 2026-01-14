@@ -25,8 +25,8 @@ class ClientFactoryTest extends TestCase
             ]),
             $factory->build(
                 $credentials,
-                $region
-            )
+                $region,
+            ),
         );
     }
 }

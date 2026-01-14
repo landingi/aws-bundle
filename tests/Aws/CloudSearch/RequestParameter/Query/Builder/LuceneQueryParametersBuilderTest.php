@@ -31,7 +31,7 @@ final class LuceneQueryParametersBuilderTest extends TestCase
 
         self::assertSame(
             '((field1: "test" OR field2: "test") AND (field1: "query" OR field2: "query"))',
-            $builder->build()->getQuery()
+            $builder->build()->getQuery(),
         );
     }
 
