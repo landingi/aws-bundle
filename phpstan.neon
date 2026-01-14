@@ -1,5 +1,44 @@
-includes:
-	- vendor/landingi/php-coding-standards/phpstan.neon
-
 parameters:
+    level: 7
+    parallel:
+        maximumNumberOfProcesses: 2
+    tmpDir: var/cache/phpstan
+    reportUnmatchedIgnoredErrors: false
     treatPhpDocTypesAsCertain: false
+    banned_code:
+        nodes:
+            # enable detection of a set of functions
+            -
+                type: Expr_FuncCall
+                functions:
+                    - dd
+                    - debug_backtrace
+                    - dump
+                    - phpinfo
+                # print_r is used in ContentGeneration/Framework/Controller/ContentGenerationController
+                #    - print_r
+                    - proc_open
+                    - shell_exec
+                    - system
+                    - var_dump
+    paths:
+        - src
+        - tests
+    ignoreErrors:
+#        - '#Property [a-zA-Z0-9\\]+::[a-zA-Z0-9\\\$]+ is never read, only written.#'
+#        - '#Property [a-zA-Z0-9\\]+::[a-zA-Z0-9\\\$]+ is never written, only read.#'
+#        - '#Property [a-zA-Z0-9\\_]+::\$id is unused#'
+#        - '#Property [a-zA-Z0-9\\_]+::\$agencyId is unused#'
+#        - '#Call to an undefined method Symfony\\Component\\Security\\Core\\User\\UserInterface::getAccountId\(\)#'
+#        - '#Call to an undefined method Symfony\\Component\\Security\\Core\\User\\UserInterface::getAccountUuid\(\)#'
+#        - '#Method [a-zA-Z]+\\Framework\\Query\\[a-zA-Z:\(\)]+ should return array but returns array<string, mixed>\|false#'
+#        - '#Unsafe usage of new static\(\).#'
+#        - '#Parameter \#1 .+ of method Doctrine\\Common\\Collections.+.+ expects Closure.+#'
+#        - '#Parameter \$user of method SharedKernel\\Framework\\Security\\Provider\\UserProvider::upgradePassword\(\) has invalid type Symfony\\Component\\Security\\Core\\User\\PasswordAuthenticatedUserInterface\.#'
+#        - '#Parameter \$user of method SharedKernel\\Framework\\Security\\Provider\\UserFromBackendProvider::upgradePassword\(\) has invalid type Symfony\\Component\\Security\\Core\\User\\PasswordAuthenticatedUserInterface\.#'
+#        - '#Parameter \$user of method SharedKernel\\Framework\\Security\\Provider\\UserByEmailProvider::upgradePassword\(\) has invalid type Symfony\\Component\\Security\\Core\\User\\PasswordAuthenticatedUserInterface\.#'
+#        - '#Access to an undefined property Braintree\\Result.+#'
+#        - '#return type has no value type specified in iterable type (array|iterable)#'
+#        - '#no value type specified in iterable type#'
+#        - '#generic (.*?) does not specify its types#'
+#        - '#Cannot call method [a-zA-Z0-9\(\)]+ on Doctrine#'
