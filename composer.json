@@ -10,7 +10,7 @@
     },
     "require-dev": {
         "landingi/php-coding-standards": "1.0.3",
-        "phpunit/phpunit": "^12.5"
+        "phpunit/phpunit": "^11.5"
     },
     "autoload": {
         "psr-4": {
