@@ -1,4 +1,5 @@
 /vendor/
+/var/cache
 
 ###> composer/composer ###
 composer.lock
