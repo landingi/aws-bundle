@@ -5,22 +5,6 @@ parameters:
     tmpDir: var/cache/phpstan
     reportUnmatchedIgnoredErrors: false
     treatPhpDocTypesAsCertain: false
-    banned_code:
-        nodes:
-            # enable detection of a set of functions
-            -
-                type: Expr_FuncCall
-                functions:
-                    - dd
-                    - debug_backtrace
-                    - dump
-                    - phpinfo
-                # print_r is used in ContentGeneration/Framework/Controller/ContentGenerationController
-                #    - print_r
-                    - proc_open
-                    - shell_exec
-                    - system
-                    - var_dump
     paths:
         - src
         - tests
