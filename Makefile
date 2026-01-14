@@ -2,9 +2,9 @@ ci:
 	composer validate
 	vendor/bin/phpunit --testsuite all --coverage-clover=build/coverage.xml
 	vendor/bin/phpstan analyze -c phpstan.neon --memory-limit=256M
-	#vendor/bin/ecs check --config vendor/landingi/php-coding-standards/ecs.php
+	vendor/bin/ecs check
 fix:
-	vendor/bin/ecs check --fix --config vendor/landingi/php-coding-standards/ecs.php
+	vendor/bin/ecs check --fix
 run:
 	composer install --no-interaction --prefer-dist
 	exec /usr/bin/supervisord -c /etc/supervisor/supervisord.conf

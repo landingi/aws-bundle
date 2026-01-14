@@ -23,7 +23,7 @@ jobs:
             -   name: Install dependencies
                 run: composer install --prefer-dist --no-progress
             -   run: vendor/bin/phpstan analyse -c phpstan.neon
-#            -   run: vendor/bin/ecs check --config vendor/landingi/php-coding-standards/ecs.php
+            -   run: vendor/bin/ecs check
     tests:
         runs-on: ubuntu-24.04
         steps:
