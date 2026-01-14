@@ -9,6 +9,7 @@ parameters:
         - src
         - tests
     ignoreErrors:
+        - '#no value type specified in iterable type (array|iterable).#'
 #        - '#Property [a-zA-Z0-9\\]+::[a-zA-Z0-9\\\$]+ is never read, only written.#'
 #        - '#Property [a-zA-Z0-9\\]+::[a-zA-Z0-9\\\$]+ is never written, only read.#'
 #        - '#Property [a-zA-Z0-9\\_]+::\$id is unused#'

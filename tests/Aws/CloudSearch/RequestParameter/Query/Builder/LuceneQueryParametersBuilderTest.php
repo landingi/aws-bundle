@@ -46,7 +46,7 @@ final class LuceneQueryParametersBuilderTest extends TestCase
         self::assertSame($expectedQuery, $builder->build()->getQuery());
     }
 
-    public function getQueryForWildcardSearch(): \Generator
+    public static function getQueryForWildcardSearch(): \Generator
     {
         yield ['test', '*test*'];
         yield ['test   query', '(*test* AND *query*)'];
@@ -72,7 +72,7 @@ final class LuceneQueryParametersBuilderTest extends TestCase
         self::assertSame($expectedQuery, $builder->build()->getQuery());
     }
 
-    public function getQueryForWildcardSearchWithFields(): \Generator
+    public static function getQueryForWildcardSearchWithFields(): \Generator
     {
         yield ['test', '(field1: *test* OR field2: *test*)'];
         yield ['test query', '((field1: *test* OR field2: *test*) AND (field1: *query* OR field2: *query*))'];
@@ -99,7 +99,7 @@ final class LuceneQueryParametersBuilderTest extends TestCase
         self::assertSame($expectedQuery, $builder->build()->getQuery());
     }
 
-    public function getQueryForWildcardAndExactSearchWithFields(): \Generator
+    public static function getQueryForWildcardAndExactSearchWithFields(): \Generator
     {
         yield ['test', '(field1: "test" OR field1: *test*)'];
         yield ['test query', '((field1: "test" OR field1: *test*) AND (field1: "query" OR field1: *query*))'];
