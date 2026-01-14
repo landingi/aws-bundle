@@ -14,15 +14,15 @@ class BooleanMeasureTest extends TestCase
             'true',
             (new BooleanMeasure(
                 new AttributeName('foo'),
-                true
-            ))->getValue()
+                true,
+            ))->getValue(),
         );
         self::assertEquals(
             'false',
             (new BooleanMeasure(
                 new AttributeName('foo'),
-                false
-            ))->getValue()
+                false,
+            ))->getValue(),
         );
     }
 
@@ -32,8 +32,8 @@ class BooleanMeasureTest extends TestCase
             'BOOLEAN',
             (new BooleanMeasure(
                 new AttributeName('foo'),
-                true
-            ))->getValueType()
+                true,
+            ))->getValueType(),
         );
     }
 
@@ -43,8 +43,8 @@ class BooleanMeasureTest extends TestCase
             'foo',
             (new BooleanMeasure(
                 new AttributeName('foo'),
-                true
-            ))->getName()
+                true,
+            ))->getName(),
         );
     }
 }

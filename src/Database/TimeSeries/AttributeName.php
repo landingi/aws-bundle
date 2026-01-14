@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Landingi\AwsBundle\Database\TimeSeries;
 
 use Landingi\AwsBundle\Database\TimeSeries\Exception\InvalidAttributeNameException;
+
 use function trim;
 
 final class AttributeName

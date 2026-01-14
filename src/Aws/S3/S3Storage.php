@@ -26,7 +26,7 @@ final class S3Storage implements StorageClient
             $this->client->getObject([
                 'Bucket' => $this->bucket,
                 'Key' => $name,
-            ])->get('Body')
+            ])->get('Body'),
         );
     }
 

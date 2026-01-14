@@ -7,6 +7,7 @@ use Countable;
 use Landingi\AwsBundle\Queue\Message;
 use Landingi\AwsBundle\Queue\MessageMetadata;
 use Landingi\AwsBundle\Queue\QueueClient;
+
 use function array_slice;
 use function count;
 

@@ -12,7 +12,10 @@ final class MemoryMessageTest extends TestCase
         self::assertEquals([], (new MemoryMessage([]))->jsonSerialize());
         self::assertEquals(['key'], (new MemoryMessage(['key']))->jsonSerialize());
         self::assertEquals(['key' => 'value'], (new MemoryMessage(['key' => 'value']))->jsonSerialize());
-        self::assertEquals(['key' => ['value', 'value']], (new MemoryMessage(['key' => ['value', 'value']]))->jsonSerialize());
+        self::assertEquals(
+            ['key' => ['value', 'value']],
+            (new MemoryMessage(['key' => ['value', 'value']]))->jsonSerialize(),
+        );
     }
 
     public function testItGetsBody(): void
@@ -20,7 +23,10 @@ final class MemoryMessageTest extends TestCase
         self::assertEquals([], (new MemoryMessage([]))->getBody());
         self::assertEquals(['key'], (new MemoryMessage(['key']))->getBody());
         self::assertEquals(['key' => 'value'], (new MemoryMessage(['key' => 'value']))->getBody());
-        self::assertEquals(['key' => ['value', 'value']], (new MemoryMessage(['key' => ['value', 'value']]))->getBody());
+        self::assertEquals(
+            ['key' => ['value', 'value']],
+            (new MemoryMessage(['key' => ['value', 'value']]))->getBody(),
+        );
     }
 
     public function testItDuplicates(): void

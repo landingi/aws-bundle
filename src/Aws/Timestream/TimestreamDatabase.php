@@ -26,14 +26,14 @@ final class TimestreamDatabase implements TimeSeriesDatabaseClient
             'DatabaseName' => $this->databaseName,
             'TableName' => $tableName->toString(),
             'Records' => array_map(
-                fn (Record $record) => [
+                fn(Record $record) => [
                     'Dimensions' => array_map(
-                        fn (Dimension $dimension) => [
+                        fn(Dimension $dimension) => [
                             'DimensionValueType' => 'VARCHAR',
                             'Name' => $dimension->getDimensionName(),
                             'Value' => $dimension->getDimensionValue(),
                         ],
-                        $record->getDimensions()
+                        $record->getDimensions(),
                     ),
                     'MeasureName' => $record->getName(),
                     'MeasureValue' => $record->getValue(),
@@ -41,7 +41,7 @@ final class TimestreamDatabase implements TimeSeriesDatabaseClient
                     'Time' => $record->getTime(),
                     'TimeUnit' => $record->getTimeUnit(),
                 ],
-                $records
+                $records,
             ),
         ]);
     }

@@ -38,7 +38,7 @@ final class SqsMessageAttribute implements MessageAttribute
     private function __construct(
         string $type,
         string $name,
-        string $stringValue
+        string $stringValue,
     ) {
         $this->type = $type;
         $this->name = $name;

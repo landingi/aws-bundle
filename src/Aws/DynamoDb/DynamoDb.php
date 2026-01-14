@@ -5,23 +5,23 @@ namespace Landingi\AwsBundle\Aws\DynamoDb;
 
 use Aws\DynamoDb\DynamoDbClient;
 use Aws\DynamoDb\Marshaler;
+use Landingi\AwsBundle\Aws\DynamoDb\KeyCriteria\ExclusiveStartKey;
 use Landingi\AwsBundle\Database\DatabaseException;
+use Landingi\AwsBundle\Database\ExactKeyCriteria;
+use Landingi\AwsBundle\Database\KeyCriteria;
 use Landingi\AwsBundle\Database\KeyValueDatabaseClient;
+
 use function json_encode;
 use function rtrim;
 use function sprintf;
 
 class DynamoDb implements KeyValueDatabaseClient
 {
-    private DynamoDbClient $client;
-    private Marshaler $marshaler;
-    private string $tableName;
-
-    public function __construct(DynamoDbClient $client, Marshaler $marshaler, string $tableName)
-    {
-        $this->client = $client;
-        $this->marshaler = $marshaler;
-        $this->tableName = $tableName;
+    public function __construct(
+        private readonly DynamoDbClient $client,
+        private readonly Marshaler $marshaler,
+        private readonly string $tableName,
+    ) {
     }
 
     /**
@@ -43,12 +43,38 @@ class DynamoDb implements KeyValueDatabaseClient
                 sprintf(
                     'Item for key (%s) not found in (%s) table',
                     json_encode($key, JSON_THROW_ON_ERROR),
-                    $this->tableName
-                )
+                    $this->tableName,
+                ),
             );
         }
 
         return (array) $this->marshaler->unmarshalItem($item['Item'], false);
+    }
+
+    public function query(
+        KeyCriteria $key,
+        int $limit,
+        ?string $indexName = null,
+        ?ExactKeyCriteria $offsetKey = null,
+    ): array {
+        $options = ['Limit' => $limit];
+
+        if ($offsetKey instanceof ExclusiveStartKey) {
+            $options['ExclusiveStartKey'] = $this->marshaler->marshalItem($offsetKey->toKeyValueArray());
+        }
+
+        $result = $this->client->query(array_merge(
+            ['TableName' => $this->tableName],
+            is_string($indexName) ? ['IndexName' => $indexName] : [],
+            $this->buildKeyConditions($key),
+            $options,
+        ))->get('Items');
+
+        if (empty($result)) {
+            return [];
+        }
+
+        return array_map(fn(array $item) => $this->marshaler->unmarshalItem($item), $result);
     }
 
     public function update(array $key, array $values): void
@@ -86,5 +112,22 @@ class DynamoDb implements KeyValueDatabaseClient
             'TableName' => $this->tableName,
             'Item' => $this->marshaler->marshalItem($item),
         ]);
+    }
+
+    private function buildKeyConditions(KeyCriteria $criteria): array
+    {
+        $conditions = [];
+        $expressions = [];
+
+        foreach ($criteria->getConditions() as $condition) {
+            $placeholder = ":{$condition->getKey()}";
+            $conditions[] = "({$condition->getKey()} {$condition->getOperator()} $placeholder)";
+            $expressions[$placeholder] = $this->marshaler->marshalValue($condition->getValue());
+        }
+
+        return [
+            'KeyConditionExpression' => implode(' and ', $conditions),
+            'ExpressionAttributeValues' => $expressions,
+        ];
     }
 }

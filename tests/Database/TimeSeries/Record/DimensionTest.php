@@ -12,11 +12,11 @@ class DimensionTest extends TestCase
     public function testValueTooShort(): void
     {
         $this->expectExceptionObject(
-            InvalidAttributeValueException::tooShort()
+            InvalidAttributeValueException::tooShort(),
         );
         new Dimension(
             new AttributeName('foo'),
-            ''
+            '',
         );
     }
 
@@ -26,8 +26,8 @@ class DimensionTest extends TestCase
             'foo',
             (new Dimension(
                 new AttributeName('foo'),
-                'bar'
-            ))->getDimensionName()
+                'bar',
+            ))->getDimensionName(),
         );
     }
 
@@ -37,8 +37,8 @@ class DimensionTest extends TestCase
             'bar',
             (new Dimension(
                 new AttributeName('foo'),
-                'bar'
-            ))->getDimensionValue()
+                'bar',
+            ))->getDimensionValue(),
         );
     }
 }

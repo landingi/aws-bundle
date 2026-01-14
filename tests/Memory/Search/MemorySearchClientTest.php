@@ -22,7 +22,7 @@ final class MemorySearchClientTest extends TestCase
         $search = new MemorySearchClient();
         $search->upload(
             new Document(new DocumentIdentifier('id1')),
-            new Document(new DocumentIdentifier('id2'))
+            new Document(new DocumentIdentifier('id2')),
         );
 
         self::assertEquals(2, $search->count());
@@ -33,7 +33,7 @@ final class MemorySearchClientTest extends TestCase
         $search = new MemorySearchClient();
         $search->upload(
             new Document(new DocumentIdentifier('id1')),
-            new Document(new DocumentIdentifier('id2'))
+            new Document(new DocumentIdentifier('id2')),
         );
         $search->delete(new DocumentIdentifier('id1'));
 

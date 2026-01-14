@@ -1,9 +1,12 @@
 services:
     aws-bundle:
-        image: ferror/symfony-image:7.4
-        command: ["make", "run"]
+        image: rareloop/php-composer:php-8.2-cli-composer-2
+        command: ["bash"]
+        working_dir: /app
         volumes:
             - ./:/app:delegated
+        tty: true
+        stdin_open: true
         networks:
             - landingi-aws-bundle
 
@@ -11,7 +14,3 @@ networks:
     landingi-aws-bundle:
         name: landingi-aws-bundle
         driver: bridge
-        ipam:
-            driver: default
-            config:
-                - subnet: 192.168.10.0/24

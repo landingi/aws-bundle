@@ -17,9 +17,9 @@ final class SortCollection implements SortParameter
         return implode(
             ', ',
             array_map(
-                static fn(SortParameter $sortByField) => (string)$sortByField,
-                $this->sortByFields
-            )
+                static fn(SortParameter $sortByField) => (string) $sortByField,
+                $this->sortByFields,
+            ),
         );
     }
 

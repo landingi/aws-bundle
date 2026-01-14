@@ -12,7 +12,10 @@ final class MemoryMessageTest extends TestCase
         self::assertEquals([], (new MemoryMessage([]))->getData());
         self::assertEquals(['key'], (new MemoryMessage(['key']))->getData());
         self::assertEquals(['key' => 'value'], (new MemoryMessage(['key' => 'value']))->getData());
-        self::assertEquals(['key' => ['value', 'value']], (new MemoryMessage(['key' => ['value', 'value']]))->getData());
+        self::assertEquals(
+            ['key' => ['value', 'value']],
+            (new MemoryMessage(['key' => ['value', 'value']]))->getData(),
+        );
     }
 
     public function testItIsSerializable(): void
@@ -20,6 +23,9 @@ final class MemoryMessageTest extends TestCase
         self::assertEquals([], (new MemoryMessage([]))->jsonSerialize());
         self::assertEquals(['key'], (new MemoryMessage(['key']))->jsonSerialize());
         self::assertEquals(['key' => 'value'], (new MemoryMessage(['key' => 'value']))->jsonSerialize());
-        self::assertEquals(['key' => ['value', 'value']], (new MemoryMessage(['key' => ['value', 'value']]))->jsonSerialize());
+        self::assertEquals(
+            ['key' => ['value', 'value']],
+            (new MemoryMessage(['key' => ['value', 'value']]))->jsonSerialize(),
+        );
     }
 }

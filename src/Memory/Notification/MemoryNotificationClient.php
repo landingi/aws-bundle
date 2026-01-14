@@ -6,6 +6,7 @@ namespace Landingi\AwsBundle\Memory\Notification;
 use Countable;
 use Landingi\AwsBundle\Notification\Message;
 use Landingi\AwsBundle\Notification\NotificationClient;
+
 use function count;
 
 final class MemoryNotificationClient implements NotificationClient, Countable

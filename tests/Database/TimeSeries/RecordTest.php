@@ -14,15 +14,15 @@ class RecordTest extends TestCase
     public function testMissingDimensions(): void
     {
         $this->expectExceptionObject(
-            InvalidRecordException::missingDimension()
+            InvalidRecordException::missingDimension(),
         );
         new Record(
             new SecondsDataPoint(
                 new BooleanMeasure(
                     new AttributeName('foo'),
-                    true
-                )
-            )
+                    true,
+                ),
+            ),
         );
     }
 
@@ -32,21 +32,21 @@ class RecordTest extends TestCase
             [
                 new Dimension(
                     new AttributeName('bar'),
-                    'baz'
+                    'baz',
                 ),
             ],
             (new Record(
                 new SecondsDataPoint(
                     new BooleanMeasure(
                         new AttributeName('foo'),
-                        true
-                    )
+                        true,
+                    ),
                 ),
                 new Dimension(
                     new AttributeName('bar'),
-                    'baz'
-                )
-            ))->getDimensions()
+                    'baz',
+                ),
+            ))->getDimensions(),
         );
     }
 
@@ -56,21 +56,21 @@ class RecordTest extends TestCase
         $dataPoint = new SecondsDataPoint(
             new BooleanMeasure(
                 new AttributeName('foo'),
-                true
-            )
+                true,
+            ),
         );
         $record = new Record(
             $dataPoint,
             new Dimension(
                 new AttributeName('bar'),
-                'baz'
-            )
+                'baz',
+            ),
         );
 
         // act & assert
         self::assertEquals(
             $dataPoint->getName(),
-            $record->getName()
+            $record->getName(),
         );
     }
 
@@ -80,21 +80,21 @@ class RecordTest extends TestCase
         $dataPoint = new SecondsDataPoint(
             new BooleanMeasure(
                 new AttributeName('foo'),
-                true
-            )
+                true,
+            ),
         );
         $record = new Record(
             $dataPoint,
             new Dimension(
                 new AttributeName('bar'),
-                'baz'
-            )
+                'baz',
+            ),
         );
 
         // act & assert
         self::assertEquals(
             $dataPoint->getValue(),
-            $record->getValue()
+            $record->getValue(),
         );
     }
 
@@ -104,21 +104,21 @@ class RecordTest extends TestCase
         $dataPoint = new SecondsDataPoint(
             new BooleanMeasure(
                 new AttributeName('foo'),
-                true
-            )
+                true,
+            ),
         );
         $record = new Record(
             $dataPoint,
             new Dimension(
                 new AttributeName('bar'),
-                'baz'
-            )
+                'baz',
+            ),
         );
 
         // act & assert
         self::assertEquals(
             $dataPoint->getValueType(),
-            $record->getValueType()
+            $record->getValueType(),
         );
     }
 
@@ -128,21 +128,21 @@ class RecordTest extends TestCase
         $dataPoint = new SecondsDataPoint(
             new BooleanMeasure(
                 new AttributeName('foo'),
-                true
-            )
+                true,
+            ),
         );
         $record = new Record(
             $dataPoint,
             new Dimension(
                 new AttributeName('bar'),
-                'baz'
-            )
+                'baz',
+            ),
         );
 
         // act & assert
         self::assertEquals(
             $dataPoint->getTime(),
-            $record->getTime()
+            $record->getTime(),
         );
     }
 
@@ -152,21 +152,21 @@ class RecordTest extends TestCase
         $dataPoint = new SecondsDataPoint(
             new BooleanMeasure(
                 new AttributeName('foo'),
-                true
-            )
+                true,
+            ),
         );
         $record = new Record(
             $dataPoint,
             new Dimension(
                 new AttributeName('bar'),
-                'baz'
-            )
+                'baz',
+            ),
         );
 
         // act & assert
         self::assertEquals(
             $dataPoint->getTimeUnit(),
-            $record->getTimeUnit()
+            $record->getTimeUnit(),
         );
     }
 }
