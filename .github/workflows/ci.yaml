@@ -4,7 +4,7 @@ on:
     push:
         branches:
 #            - master
-            - OP-2142-bump-gha-actions 
+            - OP-2142-bump-gha-actions
 jobs:
     static-analyze:
         runs-on: ubuntu-24.04
