@@ -3,8 +3,7 @@ on:
     pull_request:
     push:
         branches:
-#            - master
-            - OP-2142-bump-gha-actions
+            - master
 jobs:
     static-analyze:
         runs-on: ubuntu-24.04
